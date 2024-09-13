@@ -1,7 +1,7 @@
 document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
 
-    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+    emailjs.sendForm('service_1nuwebf', 'template_lhqncse', this)
         .then(function() {
             alert('Message Sent! We will get back to you shortly.');
         }, function(error) {
