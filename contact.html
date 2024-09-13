@@ -38,12 +38,12 @@
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
     <script>
         (function() {
-            emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
+            emailjs.init("0L5svOXr2vc7kf_fS"); // Replace with your EmailJS user ID
         })();
 
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault();
-            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+            emailjs.sendForm('service_1nuwebf', 'template_lhqncse', this)
                 .then(function() {
                     alert('Message sent successfully!');
                 }, function(error) {
