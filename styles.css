@@ -323,7 +323,7 @@ footer {
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 100vw; /* Ensure it stays within the viewport */
+    width: 100%; /* Use full width of the parent */
     overflow: hidden; /* Prevent any overflow on the sides */
     margin: 0 auto; /* Center the carousel */
     margin-top: 2rem;
@@ -331,8 +331,9 @@ footer {
 
 .carousel {
     overflow: hidden;
-    width: 90%; /* Adjusted to be narrower for better centering */
+    width: 90%; /* Keep it narrower for better centering */
     max-width: 800px; /* Limit the width on larger screens */
+    margin: 0 auto; /* Center the carousel itself */
 }
 
 .carousel-images {
@@ -368,7 +369,8 @@ footer {
 /* Responsiveness for the carousel */
 @media (max-width: 768px) {
     .carousel {
-        width: 100%; /* Full width for smaller screens */
+        width: 95%; /* Full width for smaller screens, allowing slight margin */
+        max-width: 100%; /* Ensure it doesn't exceed screen width */
     }
 
     .carousel-img {
@@ -380,6 +382,7 @@ footer {
         height: 40px; /* Set button height */
     }
 }
+
 
 .sub-footer {
     background-color: white; /* White background */
