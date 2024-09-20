@@ -7,28 +7,70 @@
     <title>Elite Clear Services</title>
     <link rel="icon" type="image/x-icon" href="logos/favicon.ico">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional CSS for the active navigation link underline */
+        nav ul li a.active {
+            text-decoration: underline;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Ensure sections are properly spaced */
+        section {
+            padding: 4rem 2rem;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <img src="logos/logo.png" alt="Elite Clear Services Logo" class="logo">
+        <a href="#hero" class="logo-container">
+            <img src="logos/logo.png" alt="Elite Clear Services Logo" class="logo">
+        </a>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero">
+    <section id="hero" class="hero">
         <h2>Where Clean Spaces inspire Fresh Starts.</h2>
         <p>Providing professional cleaning services for homes and businesses.</p>
         <p><strong>Local, Licensed and Insured!</strong></p>
-        <a href="contact.html" class="cta-button">Get a Free Quote</a>
+        <a href="#contact" class="cta-button">Get a Free Quote</a>
     </section>
 
-    <section class="services-overview">
+    <section id="about" class="about-section">
+        <h2>About Elite Clear Services</h2>
+        <p>Discover Elite Clear Services for superior cleanliness with over 7 years of experience. At Elite Clear Services we specialize in providing unparalleled commercial and residential cleaning solutions. With a keen understanding of the crucial role cleanliness plays in fostering a healthy environment, we prioritize thorough cleaning and safety protocols to safeguard your space against dust, mold, and pathogens. Our dedicated team is dedicated to delivering the highest standards of service, backed by professionalism, reliability and care for our clients. As a fully insured company, we ensure the safety and protection of your property while building lasting relationships based on trust and excellence. If you're ready to experience the Elite Clear Services difference and elevate your cleaning standards, please don't hesitate to contact us. We look forward to the opportunity to serve you and contribute to creating a cleaner, healthier environment for you and your tenants.</p>
+
+     <!-- Carousel Container -->
+    <div class="carousel-container">
+        <button class="carousel-arrow left-arrow" onclick="moveCarousel(-1)">&#10094;</button> <!-- Left Arrow -->
+        
+        <div class="carousel">
+            <div class="carousel-images">
+                <img src="1.jpeg" alt="Team at work" class="carousel-img">
+                <img src="2.jpeg" alt="Clean office space" class="carousel-img">
+                <img src="3.jpeg" alt="Tools and equipment" class="carousel-img">
+                <img src="4.jpeg" alt="Workshop" class="carousel-img">
+                <img src="5.jpeg" alt="Cleaning Service" class="carousel-img">
+                <img src="6.jpeg" alt="Cleaning Service" class="carousel-img">
+            </div>
+        </div>
+
+        <button class="carousel-arrow right-arrow" onclick="moveCarousel(1)">&#10095;</button> <!-- Right Arrow -->
+    </div>
+</section>
+
+
+    <section id="services" class="services-overview">
         <h3>Our Services</h3>
         <div class="service">
             <h4>Commercial Cleaning</h4>
@@ -52,15 +94,28 @@
         </div>
     </section>
 
+    <section id="contact" class="contact-section">
+        <h2>Contact Us</h2>
+        <form id="contact-form" class="contact-form">
+            <input type="text" id="name" name="user_name" placeholder="Your Name" required>
+            <input type="email" id="email" name="user_email" placeholder="Your Email" required>
+            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
     <footer>
         <p>Contact us: (872) 301-0313 | (312) 662-8105 | Eliteclearsvcs@gmail.com </p>
         <p>Follow us On Social Media!</p>
         <div class="social-icons">
-        <a href="https://www.facebook.com/profile.php?id=61563743067294&mibextid=LQQJ4d" target="_blank" class="facebook-icon">
-            <i class="fab fa-facebook-f"></i> 
-        </a>
-    </div>
+            <a href="https://www.facebook.com/profile.php?id=61563743067294&mibextid=LQQJ4d" target="_blank" class="facebook-icon">
+                <i class="fab fa-facebook-f"></i> 
+            </a>
+        </div>
         <p>&copy; 2025 Elite Clear Services | Local, Licensed and Insured!</p>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script src="script.js"></script>
 </body>
-</html>
+</html>  
