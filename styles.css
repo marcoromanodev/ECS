@@ -340,3 +340,15 @@ footer {
         width: 90%; /* Full width for smaller screens */
     }
 }
+
+.sub-footer {
+    background-color: white; /* White background */
+    color: black; /* Black text */
+    text-align: center; /* Center the text */
+    padding: 0.5rem; /* Small padding for the rectangle */
+    font-size: 0.8rem; /* Small font size */
+    position: relative; /* Adjust position as needed */
+    bottom: 0; /* Position it at the bottom of the page */
+    width: 100%; /* Full width of the viewport */
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for a slight lift */
+}
