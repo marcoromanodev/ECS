@@ -313,7 +313,7 @@ footer {
 
 .carousel-img {
     width: 33%; /* Show 2-3 images per view */
-    margin: 0 0.5rem; /* Space between images */
+    margin: 0 ; /* Space between images */
 }
 
 .carousel-btn {
