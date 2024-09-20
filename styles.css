@@ -323,17 +323,19 @@ footer {
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 100%; /* Use full width of the parent */
+    width: 100%; /* Full width of the parent */
     overflow: hidden; /* Prevent any overflow on the sides */
-    margin: 0 auto; /* Center the carousel */
+    margin: 0 auto;
     margin-top: 2rem;
 }
 
 .carousel {
     overflow: hidden;
-    width: 90%; /* Keep it narrower for better centering */
+    width: 90%;
     max-width: 800px; /* Limit the width on larger screens */
-    margin: 0 auto; /* Center the carousel itself */
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .carousel-images {
@@ -343,7 +345,7 @@ footer {
 
 .carousel-img {
     width: 33%; /* Show 2-3 images per view */
-    margin: 0; /* Space between images */
+    margin: 0;
 }
 
 /* Adjusting button visibility */
@@ -354,32 +356,38 @@ footer {
     background-color: rgba(255, 255, 255, 0.8);
     border: none;
     cursor: pointer;
-    z-index: 1; /* Ensure buttons are on top */
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Position the buttons on the sides */
+/* Place buttons directly next to the carousel images */
 .prev-btn {
-    left: 10px; /* Adjust as necessary */
+    left: 0; /* Position the button at the left edge of the carousel */
 }
 
 .next-btn {
-    right: 10px; /* Adjust as necessary */
+    right: 0; /* Position the button at the right edge of the carousel */
 }
 
 /* Responsiveness for the carousel */
 @media (max-width: 768px) {
     .carousel {
-        width: 95%; /* Full width for smaller screens, allowing slight margin */
-        max-width: 100%; /* Ensure it doesn't exceed screen width */
+        width: 95%;
     }
 
     .carousel-img {
-        width: 90%; /* Adjust for smaller screens */
+        width: 90%;
     }
 
     .carousel-btn {
-        width: 40px; /* Set button width */
-        height: 40px; /* Set button height */
+        width: 40px;
+        height: 40px;
+        left: 10px;
+        right: 10px;
     }
 }
 
