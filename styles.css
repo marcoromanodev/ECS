@@ -7,6 +7,9 @@ body {
     background-size: cover;
     position: relative;
     z-index: 0; /* Ensure body is at the base layer */
+    width: 100%; /* Ensure body doesn't extend beyond the viewport */
+    height: 100%;
+    box-sizing: border-box; /* Include padding and border in width calculations */
     overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
@@ -20,19 +23,31 @@ body::before {
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.3); /* Reduced transparency */
     z-index: -2; /* Set z-index lower than everything else */
+    pointer-events: none; /* Prevent interaction with the overlay */
+    width: 100%; /* Ensure body doesn't extend beyond the viewport */
+    box-sizing: border-box; /* Include padding and border in width calculations */
+    overflow: hidden; /* Prevent any overflow on the sides */
 }
 
 /* Ensure all content sections are positioned above the overlay */
 header, .hero, .carousel-container, .services-overview, .about-section, .contact-section, footer {
     position: relative; /* This positions the content above the overlay */
     z-index: 1; /* Set a z-index that is higher than the overlay */
+    width: 100%; /* Ensure full-width across the screen */
+    margin: 0; /* Remove any margin that could push elements off-screen */
+    box-sizing: border-box; /* Include padding and border in width calculations */
+    overflow: hidden; /* Prevent any overflow on the sides */
 }
 
-/* Ensure sections are properly spaced */
+/* Prevent overflow for all sections */
 section {
     padding: 4rem 2rem;
     position: relative;
-    z-index: 1; /* Ensure sections are above the overlay */
+    z-index: 1;
+    width: 100vw;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent any overflow on the sides */
 }
 
 /* Adjust the logo size and invert color to white */
@@ -44,12 +59,17 @@ section {
     filter: invert(1); /* Inverts the logo color */
 }
 
+/* Updated Header styling */
 header {
     background-color: #2c3e50;
     color: white;
-    padding: 1rem;
     text-align: center;
-    z-index: 1000; /* Ensure sections are above the overlay */
+    z-index: 1000;
+    width: 100vw; /* Ensure full viewport width */
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove padding to prevent overflow */
+    box-sizing: border-box; /* Include padding and border in width calculations */
+    overflow: hidden; /* Prevent any overflow on the sides */
 }
 
 header h1 {
@@ -69,6 +89,7 @@ nav {
     width: 100%;
     transition: all 0.3s ease;
     z-index: 1000; /* Ensure sections are above the overlay */
+    overflow: hidden; /* Prevent any overflow on the sides */
 }
 
 /* Fixed nav when scrolled */
@@ -113,6 +134,7 @@ nav ul li a.active {
     nav {
         background-color: #2c3e50; /* Ensure the blue remains consistent */
         padding: 1rem;
+        overflow: hidden; /* Prevent any overflow on the sides */
     }
 
     nav ul {
@@ -271,14 +293,18 @@ html {
     cursor: pointer;
 }
 
-/* Footer Styling */
+/* Footer styling */
 footer {
     background-color: #2c3e50;
     color: white;
     text-align: center;
     padding: 1rem 0;
     position: relative;
-    z-index: 1; /* Ensure it is above the background overlay */
+    z-index: 1; /* Ensure footer is above the background overlay */
+    width: 100vw; /* Ensure footer spans the full viewport width */
+    margin: 0; /* Prevent cutting off on the right side */
+    box-sizing: border-box; /* Include padding and border in width calculations */
+    overflow: hidden; /* Prevent any overflow on the sides */
 }
 
 .social-icons a {
@@ -297,7 +323,9 @@ footer {
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 100%;
+    width: 100vw; /* Ensure it stays within the viewport */
+    overflow: hidden; /* Prevent any overflow on the sides */
+    margin: 0 auto; /* Center the carousel */
     margin-top: 2rem;
 }
 
@@ -345,10 +373,42 @@ footer {
     background-color: white; /* White background */
     color: black; /* Black text */
     text-align: center; /* Center the text */
-    padding: 0.5rem; /* Small padding for the rectangle */
+    padding: 1rem 0;
+    width: 100vw;
+    left: 0;
+    right: 0;
+    text-align: center;
     font-size: 0.8rem; /* Small font size */
     position: relative; /* Adjust position as needed */
     bottom: 0; /* Position it at the bottom of the page */
-    width: 100%; /* Full width of the viewport */
     box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for a slight lift */
+    box-sizing: border-box; /* Include padding and border in width calculations */
+    overflow: hidden; /* Prevent any overflow on the sides */
+}
+
+/* Google Reviews Section Styling */
+.google-reviews-section {
+    padding: 2rem 1rem; /* Reduced padding for less space */
+    text-align: center; /* Center align the content */
+    background-color: #f9f9f9; /* Light background to distinguish it from other sections */
+    margin: 2rem auto; /* Add margin to the top and bottom */
+    max-width: 800px; /* Limit the width of the section */
+}
+
+/* Ensure the widget is displayed properly and centered */
+.elfsight-app-71964195-ae52-431a-9eca-a3b15a587d80 {
+    width: 100%;
+    max-width: 600px; /* Limit the widget width */
+    margin: 0 auto; /* Center the widget */
+    height: auto; /* Allow it to adjust height automatically */
+    overflow: hidden; /* Make sure it doesn't overflow */
+}
+
+/* Adjusting iframe or widget container if needed */
+.google-reviews-section iframe {
+    width: 100%;
+    max-width: 600px; /* Match the max-width of the widget */
+    height: auto; /* Let height adjust dynamically */
+    max-height: 400px; /* Limit height to avoid it being too tall */
+    border: none; /* Clean look with no border */
 }
