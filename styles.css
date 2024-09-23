@@ -451,7 +451,7 @@ footer {
 }
 
 /* Ensure the widget is displayed properly and centered */
-.elfsight-app-71964195-ae52-431a-9eca-a3b15a587d80 {
+.elfsight-app-66843417-1374-4849-b046-19c440d64067 {
     width: 100%;
     max-width: 100%; /* Allow full width within the section */
     margin: 0 auto; /* Center the widget */
@@ -515,6 +515,9 @@ footer {
     background-color: #c0392b; /* Ensure hover for "Get a Free Quote" button matches */
 }
 
+.mobile-contact-bar a.btn:hover {
+    background-color: #c0392b; /* Ensure hover for "Get a Free Quote" button matches */
+}
 .mobile-contact-bar a.btn:hover {
     background-color: #c0392b; /* Ensure hover for "Get a Free Quote" button matches */
 }
