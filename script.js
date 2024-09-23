@@ -16,53 +16,76 @@ document.getElementById('contact-form').addEventListener('submit', function(even
 
 // Select all the navigation links
 const navLinks = document.querySelectorAll('nav ul li a');
+const nav = document.querySelector('nav');
+const logo = document.querySelector('.logo');
+const heroSection = document.querySelector('#hero');
+
+// Function to handle sticky navigation and logo resizing
+function handleNavPosition() {
+    const heroBottom = heroSection.offsetHeight;
+    const logoHeight = document.querySelector('.logo-container').offsetHeight;
+
+    if (window.scrollY >= heroBottom) {
+        nav.classList.add('fixed');
+        logo.classList.add('small');  // Shrink logo when scrolling
+        nav.style.top = `${logoHeight - 30}px`;  // Adjust nav top position when scrolling
+    } else {
+        nav.classList.remove('fixed');
+        logo.classList.remove('small');
+        nav.style.top = `${logoHeight}px`;  // Reset nav position below the full-sized logo
+    }
+}
+
+// Ensure nav links stay visible
+function ensureNavLinkVisibility() {
+    navLinks.forEach(link => {
+        link.style.color = 'white';  // Ensure nav links are white
+    });
+}
 
 // Function to handle section highlighting
 function handleSectionHighlight() {
     const sections = document.querySelectorAll('section');
-    let scrollPosition = window.scrollY + window.innerHeight;
+    let scrollPosition = window.scrollY + window.innerHeight / 3;
 
-    // Highlight home section if we're near the top
-    if (window.scrollY === 0) {
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === '#hero') {
-                link.classList.add('active');
-            }
-        });
-    } else {
-        sections.forEach(section => {
-            const sectionId = section.getAttribute('id');
-            const sectionOffset = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
+    sections.forEach(section => {
+        const sectionId = section.getAttribute('id');
+        const sectionOffset = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
 
-            if (scrollPosition >= sectionOffset && scrollPosition < sectionOffset + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-
-        // Special case: highlight contact section when reaching the bottom
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        if (scrollPosition >= sectionOffset && scrollPosition < sectionOffset + sectionHeight) {
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === '#contact') {
+                if (link.getAttribute('href') === `#${sectionId}`) {
                     link.classList.add('active');
                 }
             });
         }
+    });
+
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#contact') {
+                link.classList.add('active');
+            }
+        });
     }
 }
 
-// Call function on scroll
-window.addEventListener('scroll', handleSectionHighlight);
+// Call functions on scroll
+window.addEventListener('scroll', () => {
+    handleNavPosition();
+    handleSectionHighlight();
+    ensureNavLinkVisibility();  // Make sure links are white on scroll
+});
 
-// Ensure the active section is correct on page load
-document.addEventListener('DOMContentLoaded', handleSectionHighlight);
+// Ensure the active section is correct and links are visible on page load
+document.addEventListener('DOMContentLoaded', () => {
+    handleNavPosition();
+    handleSectionHighlight();
+    ensureNavLinkVisibility();  // Make sure links are white on load
+});
 
 // Select carousel elements
 const carousel = document.querySelector('.carousel-images');
@@ -73,8 +96,8 @@ const rightArrow = document.querySelector('.right-arrow');
 // Set initial index and image width
 let currentIndex = 0;
 const totalImages = carouselImages.length;
-const imagesToShow = 3;  // Showing 3 images at a time
-let imageWidth = carouselImages[0].clientWidth + 20; // Image width + margin/padding
+const imagesToShow = 3;
+let imageWidth = carouselImages[0].clientWidth + 20;
 
 // Right arrow click event
 rightArrow.addEventListener('click', () => {
@@ -101,26 +124,20 @@ function updateCarousel() {
 // Update image width on window resize to ensure responsiveness
 window.addEventListener('resize', () => {
     imageWidth = carouselImages[0].clientWidth + 20;
-    updateCarousel();  // Recalculate and update the transform position
+    updateCarousel();
 });
 
-// Select the nav and logo elements
-const nav = document.querySelector('nav');
-const heroSection = document.querySelector('#hero');
-
-// Function to handle the sticky navigation effect
-function handleNavPosition() {
-    const heroBottom = heroSection.offsetHeight;
-
-    if (window.scrollY >= heroBottom) {
-        nav.classList.add('fixed');  // Add fixed class when scrolled past the hero section
-    } else {
-        nav.classList.remove('fixed');  // Remove fixed class when at the top
-    }
+// Function to position the nav just below the logo container
+function adjustNavPosition() {
+    const logoHeight = document.querySelector('.logo-container').offsetHeight;
+    nav.style.top = `${logoHeight}px`;
 }
 
-// Call function on scroll
-window.addEventListener('scroll', handleNavPosition);
+// Adjust the position on page load
+window.addEventListener('load', adjustNavPosition);
+
+// Adjust the position on window resize
+window.addEventListener('resize', adjustNavPosition);
 
 // Ensure the nav starts in the correct position on page load
 document.addEventListener('DOMContentLoaded', handleNavPosition);
