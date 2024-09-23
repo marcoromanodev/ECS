@@ -376,6 +376,11 @@ footer {
     width: 33%; /* Show 2-3 images per view */
     margin: 0;
 }
+.carousel-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: white; /* Ensure heading text is white */
+
 
 /* Adjusting button visibility */
 .carousel-btn {
