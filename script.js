@@ -6,9 +6,11 @@
 // Handle form submission
 document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
+    
     emailjs.sendForm('service_1nuwebf', 'template_lhqncse', this)
         .then(function() {
             alert('Message sent successfully!');
+            document.getElementById('contact-form').reset();  // Clear the form fields
         }, function(error) {
             alert('Failed to send message, please try again.');
         });
