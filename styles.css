@@ -376,11 +376,6 @@ footer {
     width: 33%; /* Show 2-3 images per view */
     margin: 0;
 }
-.carousel-container h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: white; /* Ensure heading text is white */
-
 
 /* Adjusting button visibility */
 .carousel-btn {
@@ -514,6 +509,10 @@ footer {
 
 .mobile-contact-bar a:hover {
     background-color: #c0392b; /* Darker red on hover for both */
+}
+
+.mobile-contact-bar a.btn:hover {
+    background-color: #c0392b; /* Ensure hover for "Get a Free Quote" button matches */
 }
 
 .mobile-contact-bar a.btn:hover {
