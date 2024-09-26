@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Area | Elite Clear Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Leaflet.js for the map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- FontAwesome for the phone icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Styling the header, logo, and nav */
+        header {
+            width: 100%;
+            background-color: #2c3e50;
+            transition: height 0.3s ease;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px; /* Initial logo container height */
+            transition: height 0.3s ease;
+        }
+
+        .logo {
+            max-width: 150px;
+            transition: max-width 0.3s ease;
+        }
+
+        /* Shrinking the logo and container */
+        .sticky .logo-container {
+            height: 80px; /* Smaller container height on scroll */
+        }
+
+        .sticky .logo {
+            max-width: 80px; /* Shrink the logo on scroll */
+        }
+
+        nav {
+            background-color: #2c3e50;
+            width: 100%;
+            transition: top 0.3s ease;
+            position: fixed;
+            z-index: 999;
+        }
+
+        nav ul li a {
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+    <a href="index.html">
+        <img src="logos/logo.png" alt="Elite Clear Services Logo" class="logo">
+    </a>
+</div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html#hero">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Mobile Contact Bar -->
+    <div id="mobile-bar" class="mobile-contact-bar">
+        <a href="service-area.html" class="service-area-link">Service Area</a>
+        <a href="tel:+18723010313" class="call-us">
+            <div class="circle-icon">
+                <i class="fas fa-phone"></i>
+            </div>
+        </a>
+        <a href="index.html#contact" class="btn">Get a Free Quote</a>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!-- Service Area Content -->
+    <div class="service-area-container">
+        <h1>Our Service Area</h1>
+        <p>
+            Elite Clear Services is a local, family-owned business specializing in both commercial and residential cleaning.
+            Our mission is straightforward: to deliver exceptional care to our clients through meticulous cleaning.
+        </p>
+
+        <!-- Map Container -->
+        <div id="map"></div>
+
+        <!-- Service Area Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>County</th>
+                <th>Cities We Serve</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Cook, IL</td>
+                <td>Bellwood, Berkeley, Bridgeview, Chicago Heights, Chicago Ridge, Country Club Hills, Flossmoor, Glenwood, Hazel Crest, Hickory Hills, Hillside, Homewood, Justice, La Grange, La Grange Park, Lemont, Markham, Matteson, Midlothian, Oak Forest, Olympia Fields, Orland Park, Palos Heights, Palos Hills, Palos Park, Park Forest, Richton Park, Steger, Tinley Park, Westchester, Western Springs, Willow Springs, Worth</td>
+            </tr>
+            <tr>
+                <td>DuPage, IL</td>
+                <td>Addison, Aurora, Carol Stream, Clarendon Hills, Darien, Downers Grove, Elmhurst, Eola, Glen Ellyn, Glendale Heights, Hinsdale, Lisle, Lombard, Naperville, Oak Brook, Villa Park, Warrenville, West Chicago, Westmont, Wheaton, Willowbrook, Winfield, Woodridge</td>
+            </tr>
+            <tr>
+                <td>Grundy, IL</td>
+                <td>Minooka, Morris</td>
+            </tr>
+            <tr>
+                <td>Kane, IL</td>
+                <td>Aurora, Batavia, Big Rock, Elburn, Geneva, Kaneville, Mooseheart, North Aurora, Saint Charles, Sugar Grove</td>
+            </tr>
+            <tr>
+                <td>Kendall, IL</td>
+                <td>Bristol, Montgomery, Oswego, Plano, Yorkville</td>
+            </tr>
+            <tr>
+                <td>Will, IL</td>
+                <td>Aurora, Bolingbrook, Channahon, Crest Hill, Crete, Elwood, Frankfort, Homer Glen, Joliet, Lockport, Manhattan, Mokena, Monee, Naperville, New Lenox, Plainfield, Romeoville, Shorewood, University Park</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <a href="index.html#contact" class="cta-button">Contact Us Today</a>
+    </div>
+
+    <!-- Leaflet.js Map Scripts -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([41.7200, -87.7600], 10);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        L.marker([41.7200, -87.7600]).addTo(map)
+            .bindPopup('Oak Lawn, IL - Our Headquarters')
+            .openPopup();
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact us: (872) 301-0313 | (312) 662-8105 | Eliteclearsvcs@gmail.com</p>
+        <p>Follow us on Social Media!</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61563743067294" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        </div>
+        <p>&copy; 2024 Elite Clear Services | Local, Licensed and Insured!</p>
+    </footer>
+    
+    <div class="sub-footer">
+        <p>&copy; Copyright 2024 | Developed by 
+            <a href="https://SaasProductized.com" target="_blank">Saas Productized Co</a>. | All Rights Reserved</p>
+    </div>
+
+    <!-- JavaScript to handle shrinking logo and sticky nav -->
+    <script>
+        const logo = document.querySelector('.logo');
+        const nav = document.querySelector('nav');
+        const header = document.querySelector('header');
+        const logoContainer = document.querySelector('.logo-container');
+
+        // Function to adjust the navigation bar's position under the logo
+        function adjustNavPosition() {
+            const logoHeight = logoContainer.offsetHeight;
+            nav.style.top = `${logoHeight}px`; // Dynamically adjust nav based on logo container height
+        }
+
+        // Scroll event handler to adjust logo size and navigation
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 100) {
+                header.classList.add('sticky');
+            } else {
+                header.classList.remove('sticky');
+            }
+            adjustNavPosition(); // Reposition the nav on scroll
+        });
+
+        // Adjust the nav position on page load
+        window.addEventListener('load', adjustNavPosition);
+
+        // Adjust the nav position on window resize
+        window.addEventListener('resize', adjustNavPosition);
+    </script>
+
+</body>
+</html>
