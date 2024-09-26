@@ -479,15 +479,15 @@ footer {
     background: #333;
     color: white;
     display: flex;
-    justify-content: space-between; /* Space between items */
+    justify-content: space-around;
     align-items: center;
-    padding: 10px 0; /* Remove horizontal padding to align content better */
+    padding: 10px 0;
     z-index: 950;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
 }
 
-/* Set specific flex-basis for each button to ensure equal spacing */
+/* Buttons inside the mobile contact bar */
 .mobile-contact-bar a {
     color: white;
     text-decoration: none;
@@ -501,27 +501,25 @@ footer {
     border-radius: 5px;
     transition: background-color 0.3s ease;
     flex-grow: 1; /* Allow buttons to grow equally */
-    margin: 0 5px; /* Space between buttons */
-    white-space: nowrap; /* Prevents text wrapping */
+    margin: 0 5px;
+    white-space: nowrap;
 }
 
+/* Hover state for buttons */
 .mobile-contact-bar a:hover {
     background-color: #555;
 }
 
-/* Specific styles for the Service Area and Free Quote buttons */
+/* Specific styles for buttons */
 .mobile-contact-bar .service-area-link {
     background-color: #444;
-}
-
-.mobile-contact-bar .service-area-link:hover {
-    background-color: #555;
 }
 
 .mobile-contact-bar .btn {
     background-color: #e74c3c;
 }
 
+.mobile-contact-bar .service-area-link:hover,
 .mobile-contact-bar .btn:hover {
     background-color: #c0392b;
 }
@@ -537,36 +535,38 @@ footer {
 .mobile-contact-bar .circle-icon {
     background-color: #00ff00;
     border-radius: 50%;
-    padding: 15px; /* Larger padding for bigger icon */
+    padding: 20px; /* Larger padding for bigger icon */
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     position: absolute;
-    top: -20px; /* Make the circle icon stick out of the top */
+    top: -20px; /* Make the circle icon stick out only from the top */
     left: 50%;
-    transform: translateX(-50%); /* Center the icon horizontally */
+    transform: translateX(-50%);
 }
 
+/* Icon inside the circle */
 .mobile-contact-bar .circle-icon i {
     color: white;
-    font-size: 28px; /* Increase icon size */
+    font-size: 30px; /* Adjust size to make it bigger */
 }
 
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
     .mobile-contact-bar {
-        padding: 10px;
+        justify-content: space-between;
+        padding: 10px 0;
     }
 
     .mobile-contact-bar a {
-        font-size: 0.85rem; /* Slightly smaller text on mobile */
-        padding: 8px 10px; /* Adjust padding for smaller screens */
+        font-size: 0.85rem;
+        padding: 8px 10px;
     }
 
     .mobile-contact-bar .circle-icon {
-        padding: 12px; /* Smaller padding for mobile */
-        top: -15px; /* Adjust position for mobile */
+        padding: 15px; /* Smaller padding for mobile */
+        top: -10px; /* Adjust position for smaller screens */
     }
 }
 /* Service Area page */
