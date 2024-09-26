@@ -479,15 +479,15 @@ footer {
     background: #333;
     color: white;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around; /* Use space-around for even spacing */
     align-items: center;
-    padding: 10px;
+    padding: 10px 0;
     z-index: 950;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
 }
 
-/* Set equal spacing for each button */
+/* Set specific flex-basis for each button to ensure equal spacing */
 .mobile-contact-bar a {
     color: white;
     text-decoration: none;
@@ -495,21 +495,20 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 15px;
+    padding: 8px 12px; /* Adjust padding for mobile */
     text-transform: uppercase;
     background-color: #444;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    flex-grow: 1;
-    margin: 0 5px; /* Ensure space between buttons */
-    white-space: nowrap;
+    flex-basis: 25%; /* Make side buttons smaller */
+    text-align: center;
 }
 
 .mobile-contact-bar a:hover {
     background-color: #555;
 }
 
-/* Specific styles for buttons */
+/* Specific styles for the buttons */
 .mobile-contact-bar .service-area-link {
     background-color: #444;
 }
@@ -528,28 +527,24 @@ footer {
 
 /* Call Us button styling */
 .mobile-contact-bar .call-us {
-    position: relative;
     background-color: transparent;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-grow: 0; /* Remove equal grow from this element to make it centered */
+    flex-basis: auto; /* No forced size on the center icon */
 }
 
 /* Circle icon styling */
 .mobile-contact-bar .circle-icon {
     background-color: #00ff00;
     border-radius: 50%;
-    padding: 20px; /* Increase padding for a larger icon */
+    padding: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    position: absolute;
-    top: -20px; /* Make the icon stick out from the top of the bar */
-    left: 50%;
-    transform: translateX(-50%); /* Center the circle perfectly */
+    margin: 0 10px; /* Add spacing around the circle */
 }
 
 /* Icon inside the circle */
@@ -561,17 +556,18 @@ footer {
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
     .mobile-contact-bar {
-        justify-content: space-between;
-        padding: 10px;
+        justify-content: space-around; /* Ensure space around elements on smaller screens */
+        padding: 10px 0;
     }
 
     .mobile-contact-bar a {
         font-size: 0.85rem;
-        padding: 8px 10px;
+        padding: 8px 8px; /* Reduce padding to avoid overlap */
+        flex-basis: 20%; /* Make side buttons smaller on mobile */
     }
 
     .mobile-contact-bar .circle-icon {
-        padding: 15px; /* Smaller padding for mobile */
+        padding: 12px; /* Reduce circle padding for mobile */
     }
 }
 /* Service Area page */
