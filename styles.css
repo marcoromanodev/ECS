@@ -479,13 +479,15 @@ footer {
     background: #333;
     color: white;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between; /* Space evenly between items */
     align-items: center;
-    padding: 10px 0;
+    padding: 10px;
     z-index: 950;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow for better visibility */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box; /* Include padding in the width calculation */
 }
 
+/* Set specific flex-basis for each button to ensure equal spacing */
 .mobile-contact-bar a {
     color: white;
     text-decoration: none;
@@ -493,11 +495,14 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px 15px; /* Adjust padding for mobile */
     text-transform: uppercase;
     background-color: #444;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    flex-grow: 1; /* Allow buttons to grow equally */
+    margin: 0 5px; /* Adds space between the buttons */
+    white-space: nowrap; /* Prevents text from wrapping */
 }
 
 .mobile-contact-bar a:hover {
@@ -506,7 +511,7 @@ footer {
 
 /* Specific styles for the buttons */
 .mobile-contact-bar .service-area-link {
-    background-color: #444; /* Background color for "Service Area" */
+    background-color: #444;
 }
 
 .mobile-contact-bar .service-area-link:hover {
@@ -523,41 +528,42 @@ footer {
 
 /* Call Us button styling */
 .mobile-contact-bar .call-us {
-    background-color: transparent; /* Keep background transparent */
-    padding: 0; /* Remove extra padding */
+    background-color: transparent;
+    padding: 0;
 }
 
 .mobile-contact-bar .circle-icon {
     background-color: #00ff00;
     border-radius: 50%;
-    padding: 15px;
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Circle shadow for a lifted look */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .mobile-contact-bar .circle-icon i {
     color: white;
-    font-size: 24px; /* Adjust icon size */
+    font-size: 20px;
 }
 
-/* Ensure the bar is responsive and adjusts for mobile */
+/* Responsive adjustments for mobile */
 @media (max-width: 768px) {
     .mobile-contact-bar {
-        justify-content: space-between;
+        flex-direction: row; /* Ensure items are laid out horizontally */
         padding: 10px;
     }
 
     .mobile-contact-bar a {
-        font-size: 0.9rem; /* Slightly smaller text on mobile */
-        padding: 8px 10px; /* Adjust padding */
+        font-size: 0.85rem;
+        padding: 8px 10px;
     }
 
     .mobile-contact-bar .circle-icon {
-        padding: 10px; /* Smaller icon padding on mobile */
+        padding: 8px;
     }
 }
+
 
 /* Service Area page */
 .service-area-container {
