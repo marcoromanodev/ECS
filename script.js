@@ -20,12 +20,14 @@ document.getElementById('contact-form').addEventListener('submit', function(even
 const navLinks = document.querySelectorAll('nav ul li a');
 const nav = document.querySelector('nav');
 const logo = document.querySelector('.logo');
+const header = document.querySelector('header');
+const logoContainer = document.querySelector('.logo-container');
 const heroSection = document.querySelector('#hero');
 
 // Function to handle sticky navigation and logo resizing
 function handleNavPosition() {
-    const heroBottom = heroSection.offsetHeight;
-    const logoHeight = document.querySelector('.logo-container').offsetHeight;
+    const heroBottom = heroSection ? heroSection.offsetHeight : 0;
+    const logoHeight = logoContainer.offsetHeight;
 
     if (window.scrollY >= heroBottom) {
         nav.classList.add('fixed');
@@ -129,16 +131,26 @@ window.addEventListener('resize', () => {
     updateCarousel();
 });
 
-// Function to position the nav just below the logo container
+// Function to adjust the navigation bar's position under the logo
 function adjustNavPosition() {
-    const logoHeight = document.querySelector('.logo-container').offsetHeight;
-    nav.style.top = `${logoHeight}px`;
+    const logoHeight = logoContainer.offsetHeight;
+    nav.style.top = `${logoHeight}px`; // Dynamically adjust nav based on logo container height
 }
 
-// Adjust the position on page load
+// Scroll event handler to adjust logo size and navigation
+window.addEventListener('scroll', function () {
+    if (window.scrollY > 100) {
+        header.classList.add('sticky');
+    } else {
+        header.classList.remove('sticky');
+    }
+    adjustNavPosition(); // Reposition the nav on scroll
+});
+
+// Adjust the nav position on page load
 window.addEventListener('load', adjustNavPosition);
 
-// Adjust the position on window resize
+// Adjust the nav position on window resize
 window.addEventListener('resize', adjustNavPosition);
 
 // Ensure the nav starts in the correct position on page load
