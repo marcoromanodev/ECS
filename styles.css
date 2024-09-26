@@ -2,7 +2,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 20px 0; /* Adds padding at the top and bottom for space around the white box */
     background: url('background-image.jpeg') no-repeat center center fixed;
     background-size: cover;
     position: relative;
@@ -11,6 +11,7 @@ body {
     height: 100%;
     box-sizing: border-box;
     overflow-x: hidden;
+    overflow-y: auto; /* Allow vertical scrolling */
 }
 
 /* Overlay to darken the background */
@@ -30,17 +31,12 @@ body::before {
 }
 
 /* Ensure all content sections are positioned above the overlay */
-.hero, .carousel-container, .services-overview, .about-section, .contact-section, footer {
+.hero, .carousel-container, .services-overview, .about-section, .contact-section, footer, .service-area-container {
     position: relative;
     z-index: 1; /* Set content sections at a normal level */
     width: 100%;
     margin: 0;
     box-sizing: border-box;
-    overflow: hidden;
-}
-
-header {
-    z-index: 1001; /* Set z-index above the content sections */
 }
 
 /* Prevent overflow for all sections */
@@ -51,7 +47,6 @@ section {
     width: 100vw;
     margin: 0;
     box-sizing: border-box;
-    overflow: hidden;
 }
 
 /* Adjust the logo size and invert color to white */
@@ -76,7 +71,7 @@ section {
     background-color: #2c3e50; /* Blue background behind logo */
     padding: 20px 0;
     z-index: 1001; /* Set z-index above the content sections */
-    height: 200px; /* Height for better spacing */
+    height: 150px; /* Reduced height */
     transition: all 0.3s ease;
 }
 
@@ -96,7 +91,7 @@ nav {
     padding: 1rem;
     width: 100%;
     position: fixed;
-    top: 200px; /* Position nav under the logo container with extra space */
+    top: 150px; /* Position nav under the logo container */
     z-index: 1000; /* Place the nav under the logo */
     transition: all 0.3s ease;
     box-sizing: border-box;
@@ -155,27 +150,27 @@ nav ul li a:hover {
     text-align: center;
     padding: 4rem 2rem;
     position: relative;
-    margin-top: 280px; /* Adjusted margin to account for logo and nav */
+    margin-top: 230px; /* Adjusted margin to account for logo and nav */
 }
 
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
     /* Add padding to the header to fix logo cut-off issue */
     .logo-container {
-        padding-top: 20px; /* Add more padding to the top of the logo */
-        height: 150px; /* Increased height to allow more space for the logo */
+        padding-top: 20px;
+        height: 130px; /* Increased height to allow more space for the logo */
     }
 
     nav {
-        top: 230px; /* Lower nav for more space on mobile */
+        top: 180px; /* Lower nav for more space on mobile */
     }
 
     nav.fixed {
-        top: 130px; /* Ensure nav stays below smaller logo on scroll */
+        top: 110px; /* Ensure nav stays below smaller logo on scroll */
     }
 
     .hero {
-        margin-top: 240px; /* Adjust for mobile view */
+        margin-top: 220px; /* Adjust for mobile view */
     }
 
     nav ul {
@@ -200,9 +195,10 @@ nav ul li a:hover {
 }
 
 /* Smooth scrolling */
-html {
+html, .service-area-container {
     scroll-behavior: smooth;
 }
+
 
 /* Services overview styling */
 .services-overview {
@@ -420,7 +416,6 @@ footer {
     }
 }
 
-
 /* Sub-footer styling */
 .sub-footer {
     background-color: white; /* White background */
@@ -485,39 +480,150 @@ footer {
     color: white;
     display: flex;
     justify-content: space-around;
-    align-items: center;  /* Ensures vertical centering */
+    align-items: center;
     padding: 10px 0;
     z-index: 950;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow for better visibility */
 }
 
 .mobile-contact-bar a {
-    color: white;  /* Make links white */
-    text-decoration: none;  /* Remove underline */
+    color: white;
+    text-decoration: none;
     font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
-    border-radius: 5px;
     text-transform: uppercase;
-    background-color: #444; /* Similar background to match button look */
-}
-
-.mobile-contact-bar a.btn {
-    background-color: #e74c3c; /* Background color for the "Get a Free Quote" button */
+    background-color: #444;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 .mobile-contact-bar a:hover {
-    background-color: #c0392b; /* Darker red on hover for both */
+    background-color: #555;
 }
 
-.mobile-contact-bar a.btn:hover {
-    background-color: #c0392b; /* Ensure hover for "Get a Free Quote" button matches */
+/* Specific styles for the buttons */
+.mobile-contact-bar .service-area-link {
+    background-color: #444; /* Background color for "Service Area" */
 }
 
-.mobile-contact-bar a.btn:hover {
-    background-color: #c0392b; /* Ensure hover for "Get a Free Quote" button matches */
+.mobile-contact-bar .service-area-link:hover {
+    background-color: #555;
 }
-.mobile-contact-bar a.btn:hover {
-    background-color: #c0392b; /* Ensure hover for "Get a Free Quote" button matches */
+
+.mobile-contact-bar .btn {
+    background-color: #e74c3c;
+}
+
+.mobile-contact-bar .btn:hover {
+    background-color: #c0392b;
+}
+
+/* Call Us button styling */
+.mobile-contact-bar .call-us {
+    background-color: transparent; /* Keep background transparent */
+    padding: 0; /* Remove extra padding */
+}
+
+.mobile-contact-bar .circle-icon {
+    background-color: #00ff00;
+    border-radius: 50%;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Circle shadow for a lifted look */
+}
+
+.mobile-contact-bar .circle-icon i {
+    color: white;
+    font-size: 24px; /* Adjust icon size */
+}
+
+/* Ensure the bar is responsive and adjusts for mobile */
+@media (max-width: 768px) {
+    .mobile-contact-bar {
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .mobile-contact-bar a {
+        font-size: 0.9rem; /* Slightly smaller text on mobile */
+        padding: 8px 10px; /* Adjust padding */
+    }
+
+    .mobile-contact-bar .circle-icon {
+        padding: 10px; /* Smaller icon padding on mobile */
+    }
+}
+
+/* Service Area page */
+.service-area-container {
+    padding: 2rem; /* Adjusted padding for better sizing */
+    max-width: 1000px;
+    margin: 2rem auto; /* Center and give space above/below the container */
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the button horizontally */
+}
+
+.service-area-container h1 {
+    text-align: center;
+    color: #333;
+}
+
+.service-area-container p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    color: #555;
+}
+
+/* Table styling */
+.service-area-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background: white;
+}
+
+.service-area-container table th, 
+.service-area-container table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.service-area-container table th {
+    background-color: #2c3e50;
+    color: white;
+}
+
+.service-area-container table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Map container */
+#map {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 40px;
+    border-radius: 10px;
+}
+
+/* Service Area page buttons */
+.cta-button {
+    background-color: #e74c3c;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 200px;
+    text-align: center; /* Ensures text is centered within the button */
+    margin-top: 2rem; /* Add spacing above the button */
 }
