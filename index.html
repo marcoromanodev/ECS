@@ -12,15 +12,47 @@
         nav ul li a.active {
             text-decoration: underline;
         }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
+ 
+        /* Styling the header, logo, and nav */
+        header {
+            width: 100%;
+            background-color: #2c3e50;
+            transition: height 0.3s ease;
+            z-index: 1000;
         }
 
-        /* Ensure sections are properly spaced */
-        section {
-            padding: 4rem 2rem;
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px; /* Initial logo container height */
+            transition: height 0.3s ease;
+        }
+
+        .logo {
+            max-width: 150px;
+            transition: max-width 0.3s ease;
+        }
+
+        /* Shrinking the logo and container */
+        .sticky .logo-container {
+            height: 80px; /* Smaller container height on scroll */
+        }
+
+        .sticky .logo {
+            max-width: 80px; /* Shrink the logo on scroll */
+        }
+
+        nav {
+            background-color: #2c3e50;
+            width: 100%;
+            transition: top 0.3s ease;
+            position: fixed;
+            z-index: 999;
+        }
+
+        nav ul li a {
+            color: white !important;
         }
     </style>
 </head>
@@ -41,8 +73,13 @@
     
     <!-- Mobile Contact Bar -->
     <div id="mobile-bar" class="mobile-contact-bar">
-        <a href="tel:+18723010313"><i class="fas fa-phone"></i> Call Us</a>
-        <a href="#contact" class="btn">Get a Free Quote</a>
+        <a href="service-area.html" class="service-area-link">Service Area</a>
+        <a href="tel:+18723010313" class="call-us">
+            <div class="circle-icon">
+                <i class="fas fa-phone"></i>
+            </div>
+        </a>
+        <a href="index.html#contact" class="btn">Get a Free Quote</a>
     </div>
 
     <section id="hero" class="hero">
