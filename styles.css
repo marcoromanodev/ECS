@@ -660,3 +660,7 @@ footer {
         max-width: 250px; /* Limit the max width */
     }
 }
+/* Add margin to space out the paragraphs */
+p {
+    margin-bottom: 20px; /* Adjust this value to increase/decrease spacing */
+}
