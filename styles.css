@@ -421,7 +421,6 @@ footer {
     background-color: white; /* White background */
     color: black; /* Black text */
     text-align: center; /* Center the text */
-    padding: 1rem 0 4rem; /* Added extra padding at the bottom */
     width: 100vw;
     left: 0;
     right: 0;
