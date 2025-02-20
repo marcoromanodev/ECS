@@ -1,207 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Clear Services</title>
-    <link rel="icon" type="image/x-icon" href="logos/favicon.ico">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Additional CSS for the active navigation link underline */
-        nav ul li a.active {
-            text-decoration: underline;
-        }
- 
-        /* Styling the header, logo, and nav */
-        header {
-            width: 100%;
-            background-color: #2c3e50;
-            transition: height 0.3s ease;
-            z-index: 1000;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional landscaping services including lawn care, hardscaping, garden design, and more.">
+  <meta name="keywords" content="landscaping, lawn care, garden design, hardscaping, outdoor services">
+  <title>ANAS LANDSCAPING LLC - Trusted Landscaping Solutions</title>
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 150px; /* Initial logo container height */
-            transition: height 0.3s ease;
-        }
+  <!-- Fonts and Icons -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&display=swap" rel="stylesheet">
 
-        .logo {
-            max-width: 150px;
-            transition: max-width 0.3s ease;
-        }
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
 
-        /* Shrinking the logo and container */
-        .sticky .logo-container {
-            height: 80px; /* Smaller container height on scroll */
-        }
-
-        .sticky .logo {
-            max-width: 80px; /* Shrink the logo on scroll */
-        }
-
-        nav {
-            background-color: #2c3e50;
-            width: 100%;
-            transition: top 0.3s ease;
-            position: fixed;
-            z-index: 999;
-        }
-
-        nav ul li a {
-            color: white !important;
-        }
-    </style>
+  <!-- jQuery (if needed) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <header>
-        <a href="index.html" class="logo-container">
-            <img src="logos/logo.png" alt="Elite Clear Services Logo" class="logo">
+  <!-- Header -->
+  <header class="header">
+    <nav class="main-nav">
+      <div class="logo-container">
+        <a href="https://anaslandscaping.com">
+          <h1 style="font-family: 'Merriweather', serif; color: black; text-align: center;">
+  <img src="newlogo.png" alt="New Logo" style="width: 85px; margin-right: 10px; vertical-align: middle;">ANA'S LANDSCAPING LLC
+</h1>
         </a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <!-- Mobile Contact Bar -->
-    <div id="mobile-bar" class="mobile-contact-bar">
-        <a href="service-area.html" class="service-area-link">Service Area</a>
-        <a href="tel:+18723010313" class="call-us">
-            <div class="circle-icon">
-                <i class="fas fa-phone"></i>
-            </div>
-        </a>
-        <a href="index.html#contact" class="btn">Get a Free Quote</a>
-    </div>
-
-    <section id="hero" class="hero">
-        <h2>Where Clean Spaces inspire Fresh Starts.</h2>
-        <p>Providing professional cleaning services for commercial businesses and residential homes.</p>
-        <p><strong>Local, Licensed and Insured!</strong></p>
-        <a href="#contact" class="cta-button">Contact Us</a>
-    </section>
-
-    <section id="about" class="about-section">
-        <h2>About Us</h2>
-        <p>With over 7 years of experience, Elite Clear Services provides expert commercial and residential cleaning solutions. We prioritize thorough cleaning and safety protocols to ensure your space remains free from dust, mold, and pathogens. Backed by professionalism, reliability, and a commitment to excellence, we deliver high-quality service to meet your unique needs. As a fully insured company, we safeguard your property while building lasting relationships. Contact us today to experience the Elite Clear Services difference and elevate your cleaning standards.</p>
-
-        <!-- A Cost-effective & Lasting Solution -->
-        <h2>A Cost-effective & Lasting Solution</h2>
-        <p>Elite Clear Services will assess your commercial needs and provide a tailored proposal to ensure superior cleanliness and complete satisfaction. With years of expertise and top-tier equipment, we guarantee exceptional results. We continually evaluate the latest products and technologies to enhance our services and deliver even better outcomes.</p>
-
-        <!-- Handling All the Details -->
-        <h2>Handling All the Details</h2>
-        <p>We work closely with property owners, facility managers, and staff to ensure efficient, minimally disruptive cleaning services. We manage the logistics, including informing tenants, coordinating traffic flow, and implementing safety measures, so you can focus on your operations with peace of mind.
-
-        Our ongoing maintenance programs ensure your property stays clean and welcoming year-round. We are committed to exceeding expectations and take pride in delivering quality you can trust.</p>
-
-        <p>We also have programs that will provide regular maintenance so your building will always look clean and inviting. We know that our satisfied customers are our road to future success. We stand behind all our work and strive to exceed your expectations.</p>
-
-        <p>Call us at <strong>(872) 301-0313</strong> today for an affordable quote.</p>
+      </div>
         
-        <!-- Carousel Container -->
-    <h2>Our Recent Projects</h2>
-    <div class="carousel-container">
-        <button class="carousel-arrow left-arrow" onclick="moveCarousel(-1)">&#10094;</button> <!-- Left Arrow -->
-        
-        <div class="carousel">
-            <div class="carousel-images">
-                <img src="1.jpeg" alt="Team at work" class="carousel-img">
-                <img src="2.jpeg" alt="Clean office space" class="carousel-img">
-                <img src="3.jpeg" alt="Tools and equipment" class="carousel-img">
-                <img src="4.jpeg" alt="Workshop" class="carousel-img">
-                <img src="5.jpeg" alt="Cleaning Service" class="carousel-img">
-                <img src="6.jpeg" alt="Cleaning Service" class="carousel-img">
-                <img src="7.jpeg" alt="Team at work" class="carousel-img">
-                <img src="8.jpeg" alt="Clean office space" class="carousel-img">
-                <img src="9.jpeg" alt="Tools and equipment" class="carousel-img">
-                <img src="10.jpeg" alt="Workshop" class="carousel-img">
-                <img src="11.jpeg" alt="Cleaning Service" class="carousel-img">
-                <img src="12.jpeg" alt="Cleaning Service" class="carousel-img">
-            </div>
-        </div>
 
-        <button class="carousel-arrow right-arrow" onclick="moveCarousel(1)">&#10095;</button> <!-- Right Arrow -->
+
+      <ul class="desktop-menu">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#solutions">Solutions</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <!-- Hamburger Icon (visible on mobile via CSS media queries) -->
+      <div class="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu (hidden by default; toggled via JS) -->
+  <div class="mobile-menu">
+    <!-- Close Button -->
+    <div class="close-btn">&times;</div>
+    <ul>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+
+<div id="mobile-bar" class="mobile-contact-bar">
+  <a href="#service-area" class="service-area">
+    <i class="fas fa-search" style="color: lightgreen;"></i> Service Area
+  </a>
+  <a href="sms:+17736778143" class="text-circle">
+    <i class="fas fa-mobile-alt" style="color: lightgreen;"></i>
+  </a>
+  <a href="mailto:anaslandscapingllc@gmail.com" class="contact-us">
+    <i class="fas fa-envelope" style="color: lightgreen;"></i> Contact Us
+  </a>
+</div>
+
+
+  <!-- Main Banner -->
+  <section class="main-banner" style="background: url('landscapeconstruction.jpeg') no-repeat center center/cover; background-size: cover; opacity: 0.6;">
+    <p style="color: white; text-shadow: 2px 2px 4px #000;">
+      "Delivering top-tier landscaping solutions across Chicagoland with expertise and reliability."
+    </p>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <div class="about-us-content">
+      <p>At Anas Landscaping LLC, we specialize in creating both traditional and ecological landscapes that enhance the environment functionally and aesthetically. With over 20 years of experience, our family-owned business provides top-tier landscaping services for residential and commercial properties across Chicagoland.</p>
+      <p>Our services include lawn care, garden transformations, landscape and hardscape installation, ecological restoration, and green infrastructure. Our team of certified professionals is skilled in delivering projects of all sizes with precision and quality materials.</p>
+      <p>We are committed to providing ecologically and economically driven solutions that exceed client expectations. At Anas Landscaping LLC, we build lasting relationships with our clients, aiming for sustainable solutions that positively impact both the environment and communities we serve.</p>
     </div>
-    </section>
+  </section>
 
-    <section id="services" class="services-overview">
-        <h3>Our Services</h3>
-        <div class="service">
-            <i class="fas fa-broom"></i>
-            <h4>Commercial Cleaning</h4>
-            <p>Professional cleaning tailored to office and business spaces.</p>
-        </div>
-        <div class="service">
-            <i class="fas fa-home"></i>
-            <h4>Residential Cleaning</h4>
-            <p>Thorough home cleaning designed to meet your unique needs.</p>
-        </div>
-        <div class="service">
-            <i class="fas fa-tools"></i>
-            <h4>Facility Maintenance</h4>
-            <p>Comprehensive cleaning and maintenance for your facility.</p>
-        </div>
-        <div class="service">
-            <i class="fas fa-hard-hat"></i>
-            <h4>Post-Construction Cleaning</h4>
-            <p>Expert cleaning after construction to make your space move-in ready.</p>
-        </div>
-        <div class="service">
-            <i class="fas fa-trash"></i>
-            <h4>Trash Removal</h4>
-            <p>Reliable and efficient trash removal services.</p>
-        </div>
-        <div class="service">
-            <i class="fas fa-water"></i>
-            <h4>Pressure Washing</h4>
-            <p>Elite Clear Services offers pressure washing for buildings, sidewalks, and garages.</p>
-        </div>
-
-        <section class="google-reviews-section">
-            <div class="elfsight-app-66843417-1374-4849-b046-19c440d64067" data-elfsight-app-lazy></div>
-        </section> 
-
-        <script src="https://static.elfsight.com/platform/platform.js" async></script>
-    </section>
-
-    <section id="contact" class="contact-section">
-        <h2>Contact Us</h2>
-        <form id="contact-form" class="contact-form">
-            <input type="text" id="name" name="user_name" placeholder="Your Name" required>
-            <input type="email" id="email" name="user_email" placeholder="Your Email" required>
-            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
-    
-    <br>
-
-    <footer>
-        <p>Contact us: (872) 301-0313 | (312) 662-8105 | Eliteclearsvcs@gmail.com </p>
-        <p>Follow us On Social Media!</p>
-        <div class="social-icons">
-            <a href="https://www.facebook.com/profile.php?id=61563743067294&mibextid=LQQJ4d" target="_blank" class="facebook-icon">
-                <i class="fab fa-facebook-f"></i> 
-            </a>
-        </div>
-        <p>&copy; 2024 Elite Clear Services | Local, Licensed and Insured!</p>
-        
-         <div class="sub-footer">
-        <p>&copy; Copyright 2024 | Developed by 
-            <a href="https://SaasProductized.com" target="_blank">Saas Productized Co</a>. | All Rights Reserved</p>
+  <!-- Solutions Section -->
+  <section id="solutions" class="solutions">
+    <h2 style="color: black; font-family: 'Roboto Condensed', sans-serif; font-size: 2.5em; font-weight: bold;">Our Landscaping Solutions</h2>
+    <p style="color: black; font-family: 'Open Sans', sans-serif; font-size: 1.2em;">Check out the solutions we offer to see if we can be of assistance on your next project!</p>
+    <div class="solutions-list">
+      <div class="solution-item">
+        <i class="fas fa-seedling"></i>
+        <h3>Landscape Construction</h3>
+        <p>We offer full landscape construction services, from patios to garden walls, to transform your outdoor space.</p>
+      </div>
+      <div class="solution-item">
+        <i class="fas fa-water"></i>
+        <h3>Stream & Shoreline Restoration</h3>
+        <p>We restore streams and shorelines, ensuring that they are natural, sustainable, and safe for the environment.</p>
+      </div>
+      <div class="solution-item">
+        <i class="fas fa-leaf"></i>
+        <h3>Ecological Restoration</h3>
+        <p>We focus on revitalizing ecosystems to improve biodiversity, soil health, and overall sustainability.</p>
+      </div>
+      <div class="solution-item">
+        <i class="fas fa-tree"></i>
+        <h3>Green Infrastructure</h3>
+        <p>We design and implement green infrastructure solutions such as rain gardens and permeable pavements.</p>
+      </div>
+      <div class="solution-item">
+        <i class="fas fa-cogs"></i>
+        <h3>Hardscaping</h3>
+        <p>Transform your outdoor spaces with custom-designed walkways, patios, and retaining walls.</p>
+      </div>
+      <div class="solution-item">
+        <i class="fas fa-seedling"></i>
+        <h3>Garden Design & Lawn Care</h3>
+        <p>We provide expert garden design and lawn care services, ensuring your space is lush and beautiful all year round.</p>
+      </div>
     </div>
-    </footer>
+  </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-    <script src="script.js"></script>
+  <!-- Service Area Section -->
+  <section id="service-area" class="service-area">
+    <h2 style="font-family: 'Roboto Condensed', sans-serif; font-size: 2.5em; font-weight: bold;">Service Area</h2>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118752.26740673995!2d-87.9440712!3d41.836944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2db5e8f1b4f3%3A0x803401903c6c23bf!2sChicago%2C%20IL!5e0!3m2!1sen!2sus!4v1677677015914!5m2!1sen!2sus" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2 style="font-family: 'Roboto Condensed', sans-serif; font-size: 2.5em; font-weight: bold;">Contact Us</h2>
+    <form id="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn primary-btn" style="background-color: lightgreen;">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="certifications">
+      <div class="certifications-row">
+        <img src="1.png" alt="Certification 1">
+        <img src="2.png" alt="Certification 2">
+        <img src="3.png" alt="Certification 3">
+        <img src="4.png" alt="Certification 4">
+      </div>
+      <div class="certification-large">
+        <img src="5.png" alt="Certification 5">
+      </div>
+    </div>
+    <p>&copy; 2025 ANAS LANDSCAPING LLC. All rights reserved.</p>
+  </footer>
+
+  <div class="sub-footer">
+    <p>Developed by <a href="https://saasproductized.com" target="_blank" style="font-weight: bold;">SaaS Productized Co.</a></p>
+  </div>
+
+  <!-- Inline JavaScript (or you can use scripts.js) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const mobileMenu = document.querySelector('.mobile-menu');
+      const hamburger = document.querySelector('.hamburger');
+      const closeBtn = document.querySelector('.mobile-menu .close-btn');
+
+      if (!mobileMenu) {
+        console.error("Mobile menu not found!");
+      }
+      if (!hamburger) {
+        console.error("Hamburger icon not found!");
+      }
+
+      // Toggle mobile menu visibility when the hamburger icon is clicked
+      hamburger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        mobileMenu.classList.toggle('show');
+        hamburger.classList.toggle('active');
+      });
+
+      // Close the mobile menu when clicking outside of it
+      window.addEventListener('click', function (event) {
+        if (!mobileMenu.contains(event.target) && !hamburger.contains(event.target)) {
+          mobileMenu.classList.remove('show');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Prevent clicks inside the mobile menu from closing it
+      mobileMenu.addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+
+      // Close mobile menu when the close button is clicked
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          mobileMenu.classList.remove('show');
+          hamburger.classList.remove('active');
+        });
+      }
+    });
+  </script>
 </body>
 </html>
