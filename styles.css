@@ -408,6 +408,19 @@ footer {
     text-decoration: underline;
 }
 
+.hidden {
+    display: none;
+}
+
+.see-more-btn {
+    background: none;
+    border: none;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: inherit;
+}
+
 /* Google Reviews Section Styling */
 .google-reviews-section {
     padding: 2rem 1rem; /* Reduced padding for less space */

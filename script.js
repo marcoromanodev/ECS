@@ -146,3 +146,13 @@ window.addEventListener('load', adjustNavPosition);
 // Adjust the nav position on window resize
 window.addEventListener('resize', adjustNavPosition);
 
+// Reveal additional footer links on "See more" click
+const seeMoreButton = document.getElementById('see-more');
+const extraLinks = document.getElementById('extra-links');
+if (seeMoreButton && extraLinks) {
+    seeMoreButton.addEventListener('click', () => {
+        extraLinks.classList.remove('hidden');
+        seeMoreButton.style.display = 'none';
+    });
+}
+
