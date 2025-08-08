@@ -640,6 +640,16 @@ p {
     background: url('background-image.jpeg') no-repeat center center/cover;
     text-align: center;
     padding: 3rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 650px;
+}
+
+.reviews-widget {
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
 }
 
 .reviews-container {

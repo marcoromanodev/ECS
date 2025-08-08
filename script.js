@@ -133,26 +133,15 @@ function adjustNavPosition() {
     nav.style.top = `${logoHeight}px`; // Dynamically adjust nav based on logo container height
 }
 
-// Scroll to the section specified in the URL hash or query parameter
+// Scroll to the section specified in the URL hash
 function scrollToTarget() {
-    const params = new URLSearchParams(window.location.search);
-    let selector = window.location.hash;
-
-    // Support query parameter (?contact) for cross-page navigation by converting it to a hash
-    if (!selector && params.has('contact')) {
-        selector = '#contact';
-        history.replaceState(null, '', '#contact');
-    }
-
+    const selector = window.location.hash;
     if (selector) {
         const target = document.querySelector(selector);
         if (target) {
             // Wait for layout to stabilize, then account for the fixed header height
             requestAnimationFrame(() => {
                 const offset = nav.offsetHeight + logoContainer.offsetHeight;
-                // Use the element's offset from the top of the document to
-                // avoid issues when navigating from another page where the
-                // browser may have already adjusted the scroll position.
                 const yOffset = target.offsetTop - offset;
                 window.scrollTo({ top: yOffset, behavior: 'smooth' });
             });
@@ -174,19 +163,6 @@ window.addEventListener('scroll', function () {
 window.addEventListener('load', () => {
     adjustNavPosition();
     scrollToTarget();
-
-    // The reviews widget injected by Elfsight loads its content asynchronously and can
-    // shift the page after the initial scroll calculation. Observe the widget container
-    // and re-run the scroll once it populates to ensure the contact form is positioned
-    // correctly when navigating from other pages.
-    const elfsightContainer = document.querySelector('[class^="elfsight-app-"]');
-    if (elfsightContainer) {
-        const observer = new MutationObserver(() => {
-            scrollToTarget();
-            observer.disconnect();
-        });
-        observer.observe(elfsightContainer, { childList: true, subtree: true });
-    }
 });
 
 // Re-adjust scroll position when the hash changes (e.g., internal navigation links)
