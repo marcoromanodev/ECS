@@ -16,12 +16,13 @@ document.getElementById('contact-form').addEventListener('submit', function(even
         });
 });
 
-// Select all the navigation links
+// Select navigation links and contact links
 const navLinks = document.querySelectorAll('nav ul li a');
 const nav = document.querySelector('nav');
 const logo = document.querySelector('.logo');
 const header = document.querySelector('header');
 const logoContainer = document.querySelector('.logo-container');
+const contactLinks = document.querySelectorAll('.contact-link');
 
 // Ensure nav links stay visible
 function ensureNavLinkVisibility() {
@@ -29,6 +30,28 @@ function ensureNavLinkVisibility() {
         link.style.color = 'white';
     });
 }
+
+// Handle contact links to account for fixed header across pages
+contactLinks.forEach(link => {
+    // Ensure links point to the contact section on the index page
+    if (link.getAttribute('href') === '#contact' && !window.location.pathname.endsWith('index.html') && window.location.pathname !== '/') {
+        link.setAttribute('href', 'index.html#contact');
+    }
+
+    link.addEventListener('click', event => {
+        // On the index page, smooth scroll with header offset
+        const isIndex = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === '';
+        if (isIndex) {
+            event.preventDefault();
+            const target = document.querySelector('#contact');
+            if (target) {
+                const offset = nav.offsetHeight + logoContainer.offsetHeight;
+                const yOffset = target.offsetTop - offset;
+                window.scrollTo({ top: yOffset, behavior: 'smooth' });
+            }
+        }
+    });
+});
 
 // Sections for scroll-based active link handling
 const sections = document.querySelectorAll('section[id]');
