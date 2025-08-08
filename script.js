@@ -90,39 +90,42 @@ const carouselImages = document.querySelectorAll('.carousel-img');
 const leftArrow = document.querySelector('.left-arrow');
 const rightArrow = document.querySelector('.right-arrow');
 
-// Set initial index and image width
-let currentIndex = 0;
-const totalImages = carouselImages.length;
-const imagesToShow = 3;
-let imageWidth = carouselImages[0].clientWidth + 20;
+// Initialize carousel only if images are present
+if (carousel && carouselImages.length > 0 && leftArrow && rightArrow) {
+    // Set initial index and image width
+    let currentIndex = 0;
+    const totalImages = carouselImages.length;
+    const imagesToShow = 3;
+    let imageWidth = carouselImages[0].clientWidth + 20;
 
-// Right arrow click event
-rightArrow.addEventListener('click', () => {
-    if (currentIndex < totalImages - imagesToShow) {
-        currentIndex++;
-        updateCarousel();
+    // Right arrow click event
+    rightArrow.addEventListener('click', () => {
+        if (currentIndex < totalImages - imagesToShow) {
+            currentIndex++;
+            updateCarousel();
+        }
+    });
+
+    // Left arrow click event
+    leftArrow.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+        }
+    });
+
+    // Function to update the carousel's position
+    function updateCarousel() {
+        const newTransformValue = -currentIndex * imageWidth;
+        carousel.style.transform = `translateX(${newTransformValue}px)`;
     }
-});
 
-// Left arrow click event
-leftArrow.addEventListener('click', () => {
-    if (currentIndex > 0) {
-        currentIndex--;
+    // Update image width on window resize to ensure responsiveness
+    window.addEventListener('resize', () => {
+        imageWidth = carouselImages[0].clientWidth + 20;
         updateCarousel();
-    }
-});
-
-// Function to update the carousel's position
-function updateCarousel() {
-    const newTransformValue = -currentIndex * imageWidth;
-    carousel.style.transform = `translateX(${newTransformValue}px)`;
+    });
 }
-
-// Update image width on window resize to ensure responsiveness
-window.addEventListener('resize', () => {
-    imageWidth = carouselImages[0].clientWidth + 20;
-    updateCarousel();
-});
 
 // Function to adjust the navigation bar's position under the logo
 function adjustNavPosition() {
