@@ -47,39 +47,41 @@ function ensureNavLinkVisibility() {
     });
 }
 
-// Observe sections to highlight the active navigation link
+// Sections for scroll-based active link handling
 const sections = document.querySelectorAll('section[id]');
 
-const observerOptions = {
-    root: null,
-    threshold: 0.6,
-};
+// Highlight navigation links based on scroll position
+function highlightNavLink() {
+    const offset = nav.offsetHeight + 50; // Offset to account for the fixed nav
+    const scrollPos = window.scrollY + offset;
 
-const sectionObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        const id = entry.target.getAttribute('id');
+    sections.forEach(section => {
+        const top = section.offsetTop;
+        const bottom = top + section.offsetHeight;
+        const id = section.getAttribute('id');
         const navLink = document.querySelector(`nav ul li a[href="#${id}"]`);
-        if (entry.isIntersecting) {
+
+        if (scrollPos >= top && scrollPos < bottom) {
             navLinks.forEach(link => link.classList.remove('active'));
             if (navLink) {
                 navLink.classList.add('active');
             }
         }
     });
-}, observerOptions);
-
-sections.forEach(section => sectionObserver.observe(section));
+}
 
 // Call functions on scroll
 window.addEventListener('scroll', () => {
     handleNavPosition();
     ensureNavLinkVisibility();  // Make sure links are white on scroll
+    highlightNavLink();
 });
 
 // Ensure the active section is correct and links are visible on page load
 document.addEventListener('DOMContentLoaded', () => {
     handleNavPosition();
     ensureNavLinkVisibility();  // Make sure links are white on load
+    highlightNavLink();
 });
 
 // Select carousel elements
