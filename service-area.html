@@ -169,8 +169,11 @@
     </footer>
     
     <div class="sub-footer">
-        <p>&copy; Copyright 2024 | Developed by 
-            <a href="https://SaasProductized.com" target="_blank">Saas Productized Co</a>. | All Rights Reserved</p>
+        <p>&copy; Copyright 2024 |
+            <a href="https://eliteclearservices.com" target="_blank">eliteclearservices.com</a>
+            <span id="extra-links-service" class="hidden"> | Developed by <a href="https://SaasProductized.com" target="_blank">Saas Productized Co</a>. | All Rights Reserved</span>
+            <button id="see-more-service" class="see-more-btn">See more</button>
+        </p>
     </div>
 
     <!-- JavaScript to handle shrinking logo and sticky nav -->
@@ -201,6 +204,16 @@
 
         // Adjust the nav position on window resize
         window.addEventListener('resize', adjustNavPosition);
+    </script>
+
+    <script>
+        const seeMoreService = document.getElementById('see-more-service');
+        if (seeMoreService) {
+            seeMoreService.addEventListener('click', function () {
+                document.getElementById('extra-links-service').classList.remove('hidden');
+                seeMoreService.style.display = 'none';
+            });
+        }
     </script>
 
 </body>
