@@ -52,7 +52,7 @@ const sections = document.querySelectorAll('section[id]');
 
 // Highlight navigation links based on scroll position
 function highlightNavLink() {
-    const offset = nav.offsetHeight + 50; // Offset to account for the fixed nav
+    const offset = nav.offsetHeight + logoContainer.offsetHeight; // Account for logo and nav heights
     const scrollPos = window.scrollY + offset;
 
     sections.forEach(section => {
@@ -135,8 +135,9 @@ function scrollToHash() {
     if (window.location.hash) {
         const target = document.querySelector(window.location.hash);
         if (target) {
-            const yOffset = target.getBoundingClientRect().top + window.pageYOffset - nav.offsetHeight;
-            window.scrollTo({ top: yOffset });
+            const offset = nav.offsetHeight + logoContainer.offsetHeight; // Total header height
+            const yOffset = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: yOffset, behavior: 'smooth' });
         }
     }
 }
@@ -156,6 +157,9 @@ window.addEventListener('load', () => {
     adjustNavPosition();
     scrollToHash();
 });
+
+// Re-adjust scroll position when hash changes (e.g., internal navigation links)
+window.addEventListener('hashchange', scrollToHash);
 
 // Adjust the nav position on window resize
 window.addEventListener('resize', adjustNavPosition);
