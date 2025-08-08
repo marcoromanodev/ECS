@@ -130,6 +130,17 @@ function adjustNavPosition() {
     nav.style.top = `${logoHeight}px`; // Dynamically adjust nav based on logo container height
 }
 
+// Scroll to the section in the URL hash after layout adjustments
+function scrollToHash() {
+    if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+            const yOffset = target.getBoundingClientRect().top + window.pageYOffset - nav.offsetHeight;
+            window.scrollTo({ top: yOffset });
+        }
+    }
+}
+
 // Scroll event handler to adjust logo size and navigation
 window.addEventListener('scroll', function () {
     if (window.scrollY > 100) {
@@ -140,8 +151,11 @@ window.addEventListener('scroll', function () {
     adjustNavPosition(); // Reposition the nav on scroll
 });
 
-// Adjust the nav position on page load
-window.addEventListener('load', adjustNavPosition);
+// Adjust the nav position on page load and ensure hash links land correctly
+window.addEventListener('load', () => {
+    adjustNavPosition();
+    scrollToHash();
+});
 
 // Adjust the nav position on window resize
 window.addEventListener('resize', adjustNavPosition);
