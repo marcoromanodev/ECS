@@ -2,8 +2,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 20px 0; /* Adds padding at the top and bottom for space around the white box */
-    background: url('background-image.jpeg') no-repeat center center fixed;
+    padding: 0; /* Removed top and bottom padding to eliminate space */
     background-size: cover;
     position: relative;
     z-index: 0;
@@ -41,12 +40,53 @@ body::before {
 
 /* Prevent overflow for all sections */
 section {
-    padding: 4rem 2rem;
+    padding: 0; /* Remove padding to fill the space fully */
     position: relative;
     z-index: 1;
     width: 100vw;
     margin: 0;
     box-sizing: border-box;
+}
+
+/* Specific background images for each section */
+.hero {
+    background: url('cleaning-background.jpeg') no-repeat center center/cover; /* Hero section background */
+    color: white;
+    text-align: center;
+    padding: 6rem 2rem; /* Increased padding for text content */
+    margin-top: 240px; /* Adjusted margin to account for logo and nav */
+    opacity: 0.6; /* Added opacity for text readability */
+}
+
+/* Adding padding for motto space */
+.hero p {
+    margin-top: 2rem; /* Add margin to space out the motto from nav links */
+}
+
+.about-section {
+    background: url('about-background.jpeg') no-repeat center center/cover; /* About section background */
+    padding: 3rem;
+    position: relative;
+    z-index: 1; /* Ensure it is above the background overlay */
+    opacity: 0.75; /* Added opacity for text readability */
+}
+
+.services-overview {
+    background: url('services-background.jpeg') no-repeat center center/cover; /* Services section background */
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 1; /* Ensure it is above the background overlay */
+    opacity: 0.75; /* Added opacity for text readability */
+}
+
+.contact-section {
+    background: url('contact-background.jpeg') no-repeat center center/cover; /* Contact section background */
+    text-align: center;
+    padding: 3rem;
+    position: relative;
+    z-index: 1; /* Ensure it is above the background overlay */
+    opacity: 0.75; /* Added opacity for text readability */
 }
 
 /* Adjust the logo size and invert color to white */
@@ -143,63 +183,6 @@ nav ul li a:hover {
     border-bottom: 2px solid #ffffff;
 }
 
-/* Hero section with background image */
-.hero {
-    background: url('cleaning-background.jpg') no-repeat center center/cover;
-    color: white;
-    text-align: center;
-    padding: 4rem 2rem;
-    position: relative;
-    margin-top: 230px; /* Adjusted margin to account for logo and nav */
-}
-
-/* Responsive adjustments for mobile */
-@media (max-width: 768px) {
-    /* Add padding to the header to fix logo cut-off issue */
-    .logo-container {
-        padding-top: 20px;
-        height: 130px; /* Increased height to allow more space for the logo */
-    }
-
-    nav {
-        top: 180px; /* Lower nav for more space on mobile */
-    }
-
-    nav.fixed {
-        top: 110px; /* Ensure nav stays below smaller logo on scroll */
-    }
-
-    .hero {
-        margin-top: 220px; /* Adjust for mobile view */
-    }
-
-    nav ul {
-        flex-direction: row;
-        overflow-x: auto;
-        justify-content: space-around;
-    }
-
-    nav ul li a {
-        font-size: 0.9rem;
-        padding-bottom: 0.3rem;
-    }
-}
-
-/* CTA button */
-.cta-button {
-    background-color: #e74c3c;
-    color: white;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-/* Smooth scrolling */
-html, .service-area-container {
-    scroll-behavior: smooth;
-}
-
-
 /* Services overview styling */
 .services-overview {
     text-align: center;
@@ -280,9 +263,10 @@ html, .service-area-container {
 /* Contact Page Styling */
 .contact-section {
     text-align: center;
-    padding: 3rem;
+    padding: 4rem;
     position: relative;
     z-index: 1; /* Ensure it is above the background overlay */
+    margin-bottom: 0px; /* Adjusted margin to account for logo and nav */
 }
 
 .contact-section h2 {
@@ -421,7 +405,7 @@ footer {
     background-color: white; /* White background */
     color: black; /* Black text */
     text-align: center; /* Center the text */
-    padding: 0.5rem 0 2rem; /*Added Extra Padding*/
+    padding: 1rem 0 2rem; /* Added extra padding at the bottom */
     width: 100vw;
     left: 0;
     right: 0;
@@ -479,12 +463,12 @@ footer {
     background: #333;
     color: white;
     display: flex;
-    justify-content: space-around; /* Use space-around for even spacing */
+    justify-content: space-between; /* Space evenly between items */
     align-items: center;
-    padding: 10px 0;
+    padding: 10px;
     z-index: 950;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-    box-sizing: border-box;
+    box-sizing: border-box; /* Include padding in the width calculation */
 }
 
 /* Set specific flex-basis for each button to ensure equal spacing */
@@ -495,13 +479,14 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 8px 12px; /* Adjust padding for mobile */
+    padding: 10px 15px; /* Adjust padding for mobile */
     text-transform: uppercase;
     background-color: #444;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    flex-basis: 25%; /* Make side buttons smaller */
-    text-align: center;
+    flex-grow: 1; /* Allow buttons to grow equally */
+    margin: 0 5px; /* Adds space between the buttons */
+    white-space: nowrap; /* Prevents text from wrapping */
 }
 
 .mobile-contact-bar a:hover {
@@ -529,47 +514,40 @@ footer {
 .mobile-contact-bar .call-us {
     background-color: transparent;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-basis: auto; /* No forced size on the center icon */
 }
 
-/* Circle icon styling */
 .mobile-contact-bar .circle-icon {
     background-color: #00ff00;
     border-radius: 50%;
-    padding: 15px;
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    margin: 0 10px; /* Add spacing around the circle */
 }
 
-/* Icon inside the circle */
 .mobile-contact-bar .circle-icon i {
     color: white;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
     .mobile-contact-bar {
-        justify-content: space-around; /* Ensure space around elements on smaller screens */
-        padding: 10px 0;
+        flex-direction: row; /* Ensure items are laid out horizontally */
+        padding: 10px;
     }
 
     .mobile-contact-bar a {
         font-size: 0.85rem;
-        padding: 8px 8px; /* Reduce padding to avoid overlap */
-        flex-basis: 20%; /* Make side buttons smaller on mobile */
+        padding: 8px 10px;
     }
 
     .mobile-contact-bar .circle-icon {
-        padding: 12px; /* Reduce circle padding for mobile */
+        padding: 8px;
     }
 }
+
 /* Service Area page */
 .service-area-container {
     padding: 2rem; /* General padding for larger screens */
@@ -660,6 +638,7 @@ footer {
         max-width: 250px; /* Limit the max width */
     }
 }
+
 /* Add margin to space out the paragraphs */
 p {
     margin-bottom: 20px; /* Adjust this value to increase/decrease spacing */
