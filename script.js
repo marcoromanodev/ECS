@@ -176,3 +176,14 @@ window.addEventListener('hashchange', scrollToTarget);
 // Adjust the nav position on window resize
 window.addEventListener('resize', adjustNavPosition);
 
+// Reveal additional projects when "See More" is clicked
+const seeMoreBtn = document.getElementById('see-more-projects');
+if (seeMoreBtn) {
+    seeMoreBtn.addEventListener('click', () => {
+        document.querySelectorAll('.project-item.hidden').forEach(item => {
+            item.classList.remove('hidden');
+        });
+        seeMoreBtn.parentElement.style.display = 'none';
+    });
+}
+
