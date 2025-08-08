@@ -629,3 +629,38 @@ footer {
 p {
     margin-bottom: 20px; /* Adjust this value to increase/decrease spacing */
 }
+
+/* Reviews section */
+.reviews-section {
+    background: url('background-image.jpeg') no-repeat center center/cover;
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.reviews-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.review {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.review-rating {
+    color: #FFD700;
+    margin-bottom: 0.5rem;
+}
+
+.review-text {
+    font-style: italic;
+}
+
+.review-author {
+    margin-top: 0.5rem;
+    font-weight: bold;
+}
