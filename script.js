@@ -156,7 +156,18 @@ function scrollToTarget() {
 window.addEventListener('load', () => {
     updateHeader();
     scrollToTarget();
+    // Re-run after asynchronous widgets load
+    setTimeout(scrollToTarget, 500);
 });
 
 window.addEventListener('hashchange', scrollToTarget);
 
+// Re-scroll when dynamic review widget alters page height
+const reviewsWidget = document.querySelector('.reviews-widget');
+if (reviewsWidget) {
+    const observer = new MutationObserver(() => {
+        scrollToTarget();
+        observer.disconnect();
+    });
+    observer.observe(reviewsWidget, { childList: true, subtree: true });
+}

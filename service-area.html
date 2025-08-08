@@ -9,64 +9,14 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <!-- FontAwesome for the phone icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Styling the header, logo, and nav */
-        header {
-            width: 100%;
-            background-color: #2c3e50;
-            transition: height 0.3s ease;
-            z-index: 1000;
-        }
-
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 150px; /* Initial logo container height */
-            transition: height 0.3s ease;
-        }
-
-        .logo {
-            max-width: 150px;
-            transition: max-width 0.3s ease;
-        }
-
-        /* Shrinking the logo and container */
-        .sticky .logo-container {
-            height: 80px; /* Smaller container height on scroll */
-        }
-
-        .sticky .logo {
-            max-width: 80px; /* Shrink the logo on scroll */
-        }
-
-        nav {
-            background-color: #2c3e50;
-            width: 100%;
-            transition: top 0.3s ease;
-            position: fixed;
-            z-index: 999;
-        }
-
-        nav ul li a {
-            color: white !important;
-        }
-
-        nav ul li a:visited {
-            color: white !important;
-        }
-    </style>
 </head>
 <body>
 
     <!-- Header -->
     <header>
-        <div class="logo-container">
-    <a href="index.html">
-        <img src="logos/logo.png" alt="Elite Clear Services Logo" class="logo">
-    </a>
-</div>
-
+        <a href="index.html#hero" class="logo-container">
+            <img src="logos/logo.png" alt="Elite Clear Services Logo" class="logo">
+        </a>
         <nav>
             <ul>
                 <li><a href="index.html#hero">Home</a></li>
@@ -87,17 +37,6 @@
         </a>
         <a href="index.html#contact" class="btn contact-link">Get a Free Quote</a>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <!-- Service Area Content -->
     <div class="service-area-container">
         <h1>Our Service Area</h1>
@@ -177,24 +116,7 @@
             <a href="https://SaasProductized.com" target="_blank">Saas Productized Co</a>. | <br> All Rights Reserved</p>
     </div>
 
-    <!-- JavaScript to handle shrinking logo and sticky nav -->
-    <script>
-        const header = document.querySelector('header');
-        const logo = document.querySelector('.logo');
-
-        function updateHeader() {
-            if (window.scrollY > 100) {
-                header.classList.add('sticky');
-                logo.classList.add('small');
-            } else {
-                header.classList.remove('sticky');
-                logo.classList.remove('small');
-            }
-        }
-
-        window.addEventListener('scroll', updateHeader);
-        document.addEventListener('DOMContentLoaded', updateHeader);
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
