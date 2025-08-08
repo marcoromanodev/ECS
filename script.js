@@ -147,7 +147,10 @@ function scrollToTarget() {
             // Wait for layout to stabilize, then account for the fixed header height
             requestAnimationFrame(() => {
                 const offset = nav.offsetHeight + logoContainer.offsetHeight;
-                const yOffset = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                // Use the element's offset from the top of the document to
+                // avoid issues when navigating from another page where the
+                // browser may have already adjusted the scroll position.
+                const yOffset = target.offsetTop - offset;
                 window.scrollTo({ top: yOffset, behavior: 'smooth' });
             });
         }
