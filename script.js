@@ -135,17 +135,21 @@ function scrollToTarget() {
     const params = new URLSearchParams(window.location.search);
     let selector = window.location.hash;
 
-    // Support query parameter (?contact) for cross-page navigation
+    // Support query parameter (?contact) for cross-page navigation by converting it to a hash
     if (!selector && params.has('contact')) {
         selector = '#contact';
+        history.replaceState(null, '', '#contact');
     }
 
     if (selector) {
         const target = document.querySelector(selector);
         if (target) {
-            const offset = nav.offsetHeight + logoContainer.offsetHeight; // Total header height
-            const yOffset = target.getBoundingClientRect().top + window.pageYOffset - offset;
-            window.scrollTo({ top: yOffset, behavior: 'smooth' });
+            // Wait for layout to stabilize, then account for the fixed header height
+            requestAnimationFrame(() => {
+                const offset = nav.offsetHeight + logoContainer.offsetHeight;
+                const yOffset = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({ top: yOffset, behavior: 'smooth' });
+            });
         }
     }
 }
