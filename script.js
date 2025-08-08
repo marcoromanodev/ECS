@@ -47,47 +47,38 @@ function ensureNavLinkVisibility() {
     });
 }
 
-// Function to handle section highlighting
-function handleSectionHighlight() {
-    const sections = document.querySelectorAll('section');
-    let scrollPosition = window.scrollY + window.innerHeight / 3;
+// Observe sections to highlight the active navigation link
+const sections = document.querySelectorAll('section[id]');
 
-    sections.forEach(section => {
-        const sectionId = section.getAttribute('id');
-        const sectionOffset = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
+const observerOptions = {
+    root: null,
+    threshold: 0.6,
+};
 
-        if (scrollPosition >= sectionOffset && scrollPosition < sectionOffset + sectionHeight) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
-                }
-            });
+const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        const id = entry.target.getAttribute('id');
+        const navLink = document.querySelector(`nav ul li a[href="#${id}"]`);
+        if (entry.isIntersecting) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            if (navLink) {
+                navLink.classList.add('active');
+            }
         }
     });
+}, observerOptions);
 
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === '#contact') {
-                link.classList.add('active');
-            }
-        });
-    }
-}
+sections.forEach(section => sectionObserver.observe(section));
 
 // Call functions on scroll
 window.addEventListener('scroll', () => {
     handleNavPosition();
-    handleSectionHighlight();
     ensureNavLinkVisibility();  // Make sure links are white on scroll
 });
 
 // Ensure the active section is correct and links are visible on page load
 document.addEventListener('DOMContentLoaded', () => {
     handleNavPosition();
-    handleSectionHighlight();
     ensureNavLinkVisibility();  // Make sure links are white on load
 });
 
@@ -153,5 +144,3 @@ window.addEventListener('load', adjustNavPosition);
 // Adjust the nav position on window resize
 window.addEventListener('resize', adjustNavPosition);
 
-// Ensure the nav starts in the correct position on page load
-document.addEventListener('DOMContentLoaded', handleNavPosition);
