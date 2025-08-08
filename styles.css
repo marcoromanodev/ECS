@@ -1,3 +1,8 @@
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 200px; /* Prevent fixed header from covering anchored content */
+}
+
 /* General styling for body background image with reduced transparency */
 body {
     font-family: Arial, sans-serif;
@@ -200,7 +205,7 @@ nav ul li a:hover {
     width: 22%; /* Adjusted for better fitting on larger screens */
     padding: 1rem;
     background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6); /* Add subtle white glow */
     margin: 1rem;
     color: white;
     border-radius: 10px;
