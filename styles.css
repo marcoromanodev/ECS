@@ -60,7 +60,7 @@ section {
     color: white;
     text-align: center;
     padding: 6rem 2rem; /* Increased padding for text content */
-    margin-top: 240px; /* Adjusted margin to account for logo and nav */
+    margin-top: 210px; /* Adjusted margin to account for logo and nav */
 }
 
 /* Adding padding for motto space */
@@ -167,6 +167,10 @@ nav ul li a {
     border-bottom: 2px solid transparent;
     transition: border-color 0.3s, color 0.3s;
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.5); /* Improve visibility on all backgrounds */
+}
+
+nav ul li a:visited {
+    color: white !important;
 }
 
 /* Underline the current section being viewed */
