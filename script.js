@@ -146,24 +146,3 @@ window.addEventListener('load', adjustNavPosition);
 // Adjust the nav position on window resize
 window.addEventListener('resize', adjustNavPosition);
 
-// Load and display Google reviews
-window.initReviews = function () {
-    const placeId = 'REPLACE_WITH_GOOGLE_PLACE_ID'; // Replace with your Google Place ID
-    const service = new google.maps.places.PlacesService(document.createElement('div'));
-    service.getDetails({ placeId, fields: ['reviews'] }, (place, status) => {
-        if (status === google.maps.places.PlacesServiceStatus.OK && place.reviews) {
-            const container = document.getElementById('google-reviews');
-            place.reviews.slice(0, 3).forEach(review => {
-                const reviewEl = document.createElement('div');
-                reviewEl.className = 'review';
-                reviewEl.innerHTML = `
-                    <div class="review-rating">${'★'.repeat(Math.round(review.rating))}${'☆'.repeat(5 - Math.round(review.rating))}</div>
-                    <p class="review-text">"${review.text}"</p>
-                    <p class="review-author">- ${review.author_name}</p>
-                `;
-                container.appendChild(reviewEl);
-            });
-        }
-    });
-};
-
