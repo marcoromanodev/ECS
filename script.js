@@ -90,71 +90,46 @@ const carouselImages = document.querySelectorAll('.carousel-img');
 const leftArrow = document.querySelector('.left-arrow');
 const rightArrow = document.querySelector('.right-arrow');
 
-// Set initial index and image width
-let currentIndex = 0;
-const totalImages = carouselImages.length;
-const imagesToShow = 3;
-let imageWidth = carouselImages[0].clientWidth + 20;
+// Initialize carousel only if elements exist
+if (carousel && carouselImages.length > 0 && leftArrow && rightArrow) {
+    let currentIndex = 0;
+    const totalImages = carouselImages.length;
+    const imagesToShow = 3;
+    let imageWidth = carouselImages[0].clientWidth + 20;
 
-// Right arrow click event
-rightArrow.addEventListener('click', () => {
-    if (currentIndex < totalImages - imagesToShow) {
-        currentIndex++;
-        updateCarousel();
+    // Right arrow click event
+    rightArrow.addEventListener('click', () => {
+        if (currentIndex < totalImages - imagesToShow) {
+            currentIndex++;
+            updateCarousel();
+        }
+    });
+
+    // Left arrow click event
+    leftArrow.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+        }
+    });
+
+    // Function to update the carousel's position
+    function updateCarousel() {
+        const newTransformValue = -currentIndex * imageWidth;
+        carousel.style.transform = `translateX(${newTransformValue}px)`;
     }
-});
 
-// Left arrow click event
-leftArrow.addEventListener('click', () => {
-    if (currentIndex > 0) {
-        currentIndex--;
+    // Update image width on window resize to ensure responsiveness
+    window.addEventListener('resize', () => {
+        imageWidth = carouselImages[0].clientWidth + 20;
         updateCarousel();
-    }
-});
-
-// Function to update the carousel's position
-function updateCarousel() {
-    const newTransformValue = -currentIndex * imageWidth;
-    carousel.style.transform = `translateX(${newTransformValue}px)`;
+    });
 }
-
-// Update image width on window resize to ensure responsiveness
-window.addEventListener('resize', () => {
-    imageWidth = carouselImages[0].clientWidth + 20;
-    updateCarousel();
-});
 
 // Function to adjust the navigation bar's position under the logo
 function adjustNavPosition() {
     const logoHeight = logoContainer.offsetHeight;
     nav.style.top = `${logoHeight}px`; // Dynamically adjust nav based on logo container height
-}
-
-// Scroll to the section specified in the URL hash or query parameter
-function scrollToTarget() {
-    const params = new URLSearchParams(window.location.search);
-    let selector = window.location.hash;
-
-    // Support query parameter (?contact) for cross-page navigation by converting it to a hash
-    if (!selector && params.has('contact')) {
-        selector = '#contact';
-        history.replaceState(null, '', '#contact');
-    }
-
-    if (selector) {
-        const target = document.querySelector(selector);
-        if (target) {
-            // Wait for layout to stabilize, then account for the fixed header height
-            requestAnimationFrame(() => {
-                const offset = nav.offsetHeight + logoContainer.offsetHeight;
-                // Use the element's offset from the top of the document to
-                // avoid issues when navigating from another page where the
-                // browser may have already adjusted the scroll position.
-                const yOffset = target.offsetTop - offset;
-                window.scrollTo({ top: yOffset, behavior: 'smooth' });
-            });
-        }
-    }
 }
 
 // Scroll event handler to adjust logo size and navigation
@@ -167,27 +142,8 @@ window.addEventListener('scroll', function () {
     adjustNavPosition(); // Reposition the nav on scroll
 });
 
-// Adjust the nav position on page load and ensure links land correctly
-window.addEventListener('load', () => {
-    adjustNavPosition();
-    scrollToTarget();
-
-    // The reviews widget injected by Elfsight loads its content asynchronously and can
-    // shift the page after the initial scroll calculation. Observe the widget container
-    // and re-run the scroll once it populates to ensure the contact form is positioned
-    // correctly when navigating from other pages.
-    const elfsightContainer = document.querySelector('[class^="elfsight-app-"]');
-    if (elfsightContainer) {
-        const observer = new MutationObserver(() => {
-            scrollToTarget();
-            observer.disconnect();
-        });
-        observer.observe(elfsightContainer, { childList: true, subtree: true });
-    }
-});
-
-// Re-adjust scroll position when the hash changes (e.g., internal navigation links)
-window.addEventListener('hashchange', scrollToTarget);
+// Adjust the nav position on page load
+window.addEventListener('load', adjustNavPosition);
 
 // Adjust the nav position on window resize
 window.addEventListener('resize', adjustNavPosition);

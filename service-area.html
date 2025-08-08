@@ -68,7 +68,7 @@
                 <li><a href="index.html#hero">Home</a></li>
                 <li><a href="index.html#about">About</a></li>
                 <li><a href="index.html#services">Services</a></li>
-                <li><a href="index.html?contact" class="contact-link">Contact</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -81,7 +81,7 @@
                 <i class="fas fa-phone"></i>
             </div>
         </a>
-        <a href="index.html?contact" class="btn contact-link">Get a Free Quote</a>
+        <a href="index.html#contact" class="btn">Get a Free Quote</a>
     </div>
     <br>
     <br>
@@ -141,7 +141,7 @@
         </tbody>
     </table>
 
-        <a href="index.html?contact" class="cta-button contact-link">Contact Us Today</a>
+        <a href="index.html#contact" class="cta-button">Contact Us Today</a>
     </div>
 
     <!-- Leaflet.js Map Scripts -->
@@ -202,13 +202,6 @@
         // Adjust the nav position on window resize
         window.addEventListener('resize', adjustNavPosition);
 
-        // Manually redirect contact-related links to the contact form on index.html
-        document.querySelectorAll('.contact-link').forEach(link => {
-            link.addEventListener('click', function (e) {
-                e.preventDefault();
-                window.location.href = 'index.html#contact';
-            });
-        });
     </script>
 
 </body>
