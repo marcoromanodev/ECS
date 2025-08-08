@@ -22,28 +22,11 @@ const nav = document.querySelector('nav');
 const logo = document.querySelector('.logo');
 const header = document.querySelector('header');
 const logoContainer = document.querySelector('.logo-container');
-const heroSection = document.querySelector('#hero');
-
-// Function to handle sticky navigation and logo resizing
-function handleNavPosition() {
-    const heroBottom = heroSection ? heroSection.offsetHeight : 0;
-    const logoHeight = logoContainer.offsetHeight;
-
-    if (window.scrollY >= heroBottom) {
-        nav.classList.add('fixed');
-        logo.classList.add('small');  // Shrink logo when scrolling
-        nav.style.top = `${logoHeight - 30}px`;  // Adjust nav top position when scrolling
-    } else {
-        nav.classList.remove('fixed');
-        logo.classList.remove('small');
-        nav.style.top = `${logoHeight}px`;  // Reset nav position below the full-sized logo
-    }
-}
 
 // Ensure nav links stay visible
 function ensureNavLinkVisibility() {
     navLinks.forEach(link => {
-        link.style.color = 'white';  // Ensure nav links are white
+        link.style.color = 'white';
     });
 }
 
@@ -70,19 +53,22 @@ function highlightNavLink() {
     });
 }
 
-// Call functions on scroll
-window.addEventListener('scroll', () => {
-    handleNavPosition();
-    ensureNavLinkVisibility();  // Make sure links are white on scroll
+// Update header, logo, and active nav links based on scroll
+function updateHeader() {
+    if (window.scrollY > 100) {
+        header.classList.add('sticky');
+        logo.classList.add('small');
+    } else {
+        header.classList.remove('sticky');
+        logo.classList.remove('small');
+    }
+    ensureNavLinkVisibility();
     highlightNavLink();
-});
+}
 
-// Ensure the active section is correct and links are visible on page load
-document.addEventListener('DOMContentLoaded', () => {
-    handleNavPosition();
-    ensureNavLinkVisibility();  // Make sure links are white on load
-    highlightNavLink();
-});
+// Call updateHeader on scroll and when the page loads
+window.addEventListener('scroll', updateHeader);
+document.addEventListener('DOMContentLoaded', updateHeader);
 
 // Select carousel elements
 const carousel = document.querySelector('.carousel-images');
@@ -127,12 +113,6 @@ if (carousel && carouselImages.length > 0 && leftArrow && rightArrow) {
     });
 }
 
-// Function to adjust the navigation bar's position under the logo
-function adjustNavPosition() {
-    const logoHeight = logoContainer.offsetHeight;
-    nav.style.top = `${logoHeight}px`; // Dynamically adjust nav based on logo container height
-}
-
 // Scroll to the section specified in the URL hash
 function scrollToTarget() {
     const selector = window.location.hash;
@@ -149,25 +129,11 @@ function scrollToTarget() {
     }
 }
 
-// Scroll event handler to adjust logo size and navigation
-window.addEventListener('scroll', function () {
-    if (window.scrollY > 100) {
-        header.classList.add('sticky');
-    } else {
-        header.classList.remove('sticky');
-    }
-    adjustNavPosition(); // Reposition the nav on scroll
-});
-
-// Adjust the nav position on page load and ensure links land correctly
+// Adjust scroll position for hash links on load and hash changes
 window.addEventListener('load', () => {
-    adjustNavPosition();
+    updateHeader();
     scrollToTarget();
 });
 
-// Re-adjust scroll position when the hash changes (e.g., internal navigation links)
 window.addEventListener('hashchange', scrollToTarget);
-
-// Adjust the nav position on window resize
-window.addEventListener('resize', adjustNavPosition);
 

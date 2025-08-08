@@ -135,16 +135,14 @@ nav {
     position: fixed;
     top: 150px; /* Position nav under the logo container */
     z-index: 1000; /* Place the nav under the logo */
-    transition: all 0.3s ease;
+    transition: top 0.3s ease;
     box-sizing: border-box;
 }
 
 /* Sticky Navigation - when scrolling */
-nav.fixed {
-    top: 110px; /* Ensure it stays below smaller logo when scrolling */
+.sticky nav {
+    top: 80px; /* Move nav with the smaller logo */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: #2c3e50; /* Ensure background color stays consistent */
-    z-index: 1001; /* Ensure it stays above the content */
 }
 
 /* Ensure the navigation links are always visible */
@@ -168,11 +166,6 @@ nav ul li a {
     padding-bottom: 0.5rem;
     border-bottom: 2px solid transparent;
     transition: border-color 0.3s, color 0.3s;
-}
-
-/* Sticky Navigation Link Visibility - fixed class */
-nav.fixed ul li a {
-    color: white !important;  /* Force white color when nav is fixed */
 }
 
 /* Underline the current section being viewed */
