@@ -130,10 +130,18 @@ function adjustNavPosition() {
     nav.style.top = `${logoHeight}px`; // Dynamically adjust nav based on logo container height
 }
 
-// Scroll to the section in the URL hash after layout adjustments
-function scrollToHash() {
-    if (window.location.hash) {
-        const target = document.querySelector(window.location.hash);
+// Scroll to the section specified in the URL hash or query parameter
+function scrollToTarget() {
+    const params = new URLSearchParams(window.location.search);
+    let selector = window.location.hash;
+
+    // Support query parameter (?contact) for cross-page navigation
+    if (!selector && params.has('contact')) {
+        selector = '#contact';
+    }
+
+    if (selector) {
+        const target = document.querySelector(selector);
         if (target) {
             const offset = nav.offsetHeight + logoContainer.offsetHeight; // Total header height
             const yOffset = target.getBoundingClientRect().top + window.pageYOffset - offset;
@@ -152,14 +160,14 @@ window.addEventListener('scroll', function () {
     adjustNavPosition(); // Reposition the nav on scroll
 });
 
-// Adjust the nav position on page load and ensure hash links land correctly
+// Adjust the nav position on page load and ensure links land correctly
 window.addEventListener('load', () => {
     adjustNavPosition();
-    scrollToHash();
+    scrollToTarget();
 });
 
-// Re-adjust scroll position when hash changes (e.g., internal navigation links)
-window.addEventListener('hashchange', scrollToHash);
+// Re-adjust scroll position when the hash changes (e.g., internal navigation links)
+window.addEventListener('hashchange', scrollToTarget);
 
 // Adjust the nav position on window resize
 window.addEventListener('resize', adjustNavPosition);
