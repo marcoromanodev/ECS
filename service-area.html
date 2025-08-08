@@ -175,32 +175,21 @@
 
     <!-- JavaScript to handle shrinking logo and sticky nav -->
     <script>
-        const logo = document.querySelector('.logo');
-        const nav = document.querySelector('nav');
         const header = document.querySelector('header');
-        const logoContainer = document.querySelector('.logo-container');
+        const logo = document.querySelector('.logo');
 
-        // Function to adjust the navigation bar's position under the logo
-        function adjustNavPosition() {
-            const logoHeight = logoContainer.offsetHeight;
-            nav.style.top = `${logoHeight}px`; // Dynamically adjust nav based on logo container height
-        }
-
-        // Scroll event handler to adjust logo size and navigation
-        window.addEventListener('scroll', function () {
+        function updateHeader() {
             if (window.scrollY > 100) {
                 header.classList.add('sticky');
+                logo.classList.add('small');
             } else {
                 header.classList.remove('sticky');
+                logo.classList.remove('small');
             }
-            adjustNavPosition(); // Reposition the nav on scroll
-        });
+        }
 
-        // Adjust the nav position on page load
-        window.addEventListener('load', adjustNavPosition);
-
-        // Adjust the nav position on window resize
-        window.addEventListener('resize', adjustNavPosition);
+        window.addEventListener('scroll', updateHeader);
+        document.addEventListener('DOMContentLoaded', updateHeader);
     </script>
 
 </body>
