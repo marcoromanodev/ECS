@@ -19,6 +19,14 @@ body {
     overflow-y: auto; /* Allow vertical scrolling */
 }
 
+/* Base header styling to ensure consistent layout across pages */
+header {
+    width: 100%;
+    background-color: #2c3e50;
+    transition: height 0.3s ease;
+    z-index: 1000;
+}
+
 /* Overlay to darken the background */
 body::before {
     content: '';
@@ -123,6 +131,11 @@ section {
     height: 70px; /* Adjust height */
     transition: all 0.3s ease;
     padding: 0.5rem 0;
+}
+
+/* Reduce the logo container height when the header becomes sticky */
+.sticky .logo-container {
+    height: 80px;
 }
 
 /* Sticky Navigation - ensure it sticks below the logo */
