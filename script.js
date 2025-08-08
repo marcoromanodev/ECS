@@ -171,6 +171,19 @@ window.addEventListener('scroll', function () {
 window.addEventListener('load', () => {
     adjustNavPosition();
     scrollToTarget();
+
+    // The reviews widget injected by Elfsight loads its content asynchronously and can
+    // shift the page after the initial scroll calculation. Observe the widget container
+    // and re-run the scroll once it populates to ensure the contact form is positioned
+    // correctly when navigating from other pages.
+    const elfsightContainer = document.querySelector('[class^="elfsight-app-"]');
+    if (elfsightContainer) {
+        const observer = new MutationObserver(() => {
+            scrollToTarget();
+            observer.disconnect();
+        });
+        observer.observe(elfsightContainer, { childList: true, subtree: true });
+    }
 });
 
 // Re-adjust scroll position when the hash changes (e.g., internal navigation links)
