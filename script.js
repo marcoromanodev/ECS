@@ -3,18 +3,21 @@
     emailjs.init("0L5svOXr2vc7kf_fS"); // Replace with your EmailJS user ID
 })();
 
-// Handle form submission
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    emailjs.sendForm('service_1nuwebf', 'template_lhqncse', this)
-        .then(function() {
-            alert('Message sent successfully!');
-            document.getElementById('contact-form').reset();  // Clear the form fields
-        }, function(error) {
-            alert('Failed to send message, please try again.');
-        });
-});
+// Handle form submission when the contact form exists
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        emailjs.sendForm('service_1nuwebf', 'template_lhqncse', this)
+            .then(function() {
+                alert('Message sent successfully!');
+                contactForm.reset();  // Clear the form fields
+            }, function(error) {
+                alert('Failed to send message, please try again.');
+            });
+    });
+}
 
 // Select navigation links and contact links
 const navLinks = document.querySelectorAll('nav ul li a');
