@@ -85,7 +85,8 @@ section::before {
     color: white;
     text-align: center;
     padding: 6rem 2rem; /* Increased padding for text content */
-    margin-top: 260px; /* Adjusted margin to account for logo and nav */
+    padding-top: calc(6rem + 260px); /* Offset content for fixed header */
+    margin-top: 0; /* Remove gap under navigation */
 }
 
 /* Adding padding for motto space */
@@ -424,8 +425,13 @@ footer {
 }
 
 .sub-footer a {
-    color: blue !important;
-    text-decoration: underline;
+    color: #000 !important;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.sub-footer a:visited {
+    color: #000 !important;
 }
 
 /* Google Reviews Section Styling */
@@ -562,8 +568,9 @@ footer {
 /* Service Area page */
 .service-area-container {
     padding: 2rem; /* General padding for larger screens */
+    padding-top: calc(2rem + 260px); /* Offset content for fixed header */
     max-width: 1000px;
-    margin: 260px auto 2rem; /* Space content below fixed header */
+    margin: 0 auto 2rem; /* Remove top margin to eliminate gap */
     background: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -632,6 +639,7 @@ footer {
 @media (max-width: 768px) {
     .service-area-container {
         padding: 1.5rem; /* Reduce padding for smaller screens */
+        padding-top: calc(1.5rem + 260px); /* Offset for fixed header on mobile */
         max-width: 90%; /* Limit the width to make it more centered */
     }
 
