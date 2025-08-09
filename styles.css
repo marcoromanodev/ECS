@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 260px; /* Prevent fixed header from covering anchored content */
@@ -89,9 +91,15 @@ section::before {
     margin-top: 0; /* Remove gap under navigation */
 }
 
+.hero h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+}
+
 /* Adding padding for motto space */
 .hero p {
     margin-top: 2rem; /* Add margin to space out the motto from nav links */
+    font-weight: bold;
 }
 
 .about-section {
@@ -633,6 +641,10 @@ footer {
     width: 200px;
     text-align: center;
     margin-top: 2rem; /* Spacing above the button */
+}
+
+.hero .cta-button {
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
 }
 
 /* Responsive styling for mobile devices */
