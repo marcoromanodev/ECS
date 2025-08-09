@@ -94,6 +94,8 @@ section::before {
 .hero h2 {
     font-family: 'Playfair Display', serif;
     font-style: italic;
+    font-size: 3rem;
+    font-weight: bold;
 }
 
 /* Adding padding for motto space */
