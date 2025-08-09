@@ -30,7 +30,8 @@ const contactLinks = document.querySelectorAll('.contact-link');
 // Ensure nav links stay visible
 function ensureNavLinkVisibility() {
     navLinks.forEach(link => {
-        link.style.color = 'white';
+        // Use inline styles with !important so widgets can't override the color
+        link.style.setProperty('color', 'white', 'important');
     });
 }
 
@@ -169,7 +170,10 @@ window.addEventListener('hashchange', scrollToTarget);
 const reviewsWidget = document.querySelector('.reviews-widget');
 if (reviewsWidget) {
     const observer = new MutationObserver(() => {
+        // Widget load can inject styles that hide nav links or shift layout
         scrollToTarget();
+        ensureNavLinkVisibility();
+        highlightNavLink();
         observer.disconnect();
     });
     observer.observe(reviewsWidget, { childList: true, subtree: true });
