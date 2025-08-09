@@ -87,7 +87,7 @@ section::before {
     color: white;
     text-align: center;
     padding: 6rem 2rem; /* Increased padding for text content */
-    padding-top: calc(6rem + 260px); /* Offset content for fixed header */
+    padding-top: calc(6rem + 220px); /* Offset content for fixed header */
     margin-top: 0; /* Remove gap under navigation */
 }
 
