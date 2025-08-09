@@ -86,8 +86,8 @@ section::before {
     background: url('cleaning-background.jpeg') no-repeat center center/cover; /* Hero section background */
     color: white;
     text-align: center;
-    padding: 6rem 2rem; /* Increased padding for text content */
-    padding-top: calc(6rem + 220px); /* Offset content for fixed header */
+    padding: 4rem 2rem; /* Adjusted padding for text content */
+    padding-top: calc(4rem + 220px); /* Offset content for fixed header with reduced top padding */
     margin-top: 0; /* Remove gap under navigation */
 }
 
