@@ -184,7 +184,7 @@ async function loadGoogleRating() {
     const container = document.getElementById('google-rating');
     if (!container) return;
 
-    const googleProfileUrl = 'https://www.google.com/maps/place/Elite+Clear+Services/';
+    const googleProfileUrl = 'https://share.google/3sdS2QtuV8lbJwZHz';
 
     function render(rating, reviews) {
         const maxStars = 5;
@@ -194,7 +194,7 @@ async function loadGoogleRating() {
                 ? '<i class="fas fa-star"></i>'
                 : '<i class="far fa-star"></i>';
         }
-        container.innerHTML = `<a href="${googleProfileUrl}" target="_blank"><span class="rating-number">${rating.toFixed(1)}</span><span class="stars">${starsHtml}</span><span class="rating-count">(${reviews} Ratings & Reviews)</span></a>`;
+        container.innerHTML = `<span class="rating-number">${rating.toFixed(1)}</span><span class="stars">${starsHtml}</span><a href="${googleProfileUrl}" target="_blank" class="rating-count">(${reviews} Ratings & Reviews)</a>`;
     }
 
     try {
