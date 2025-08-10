@@ -190,11 +190,22 @@ async function loadGoogleRating() {
         const maxStars = 5;
         let starsHtml = '';
         for (let i = 1; i <= maxStars; i++) {
-            starsHtml += i <= Math.floor(rating)
-                ? '<i class="fas fa-star"></i>'
-                : '<i class="far fa-star"></i>';
+            starsHtml += '<i class="far fa-star"></i>';
         }
         container.innerHTML = `<span class="rating-number">${rating.toFixed(1)}</span><span class="stars">${starsHtml}</span><a href="${googleProfileUrl}" target="_blank" class="rating-count">(${reviews} Ratings & Reviews)</a>`;
+        animateStars(Math.floor(rating));
+    }
+
+    function animateStars(count) {
+        const stars = container.querySelectorAll('.stars i');
+        stars.forEach((star, index) => {
+            if (index < count) {
+                setTimeout(() => {
+                    star.classList.remove('far');
+                    star.classList.add('fas', 'filled');
+                }, index * 200);
+            }
+        });
     }
 
     try {
