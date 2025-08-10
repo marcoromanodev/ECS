@@ -178,3 +178,38 @@ if (reviewsWidget) {
     });
     observer.observe(reviewsWidget, { childList: true, subtree: true });
 }
+
+// Load Google rating and review count for the widget under the hero quote
+async function loadGoogleRating() {
+    const container = document.getElementById('google-rating');
+    if (!container) return;
+
+    const googleProfileUrl = 'https://www.google.com/maps/place/Elite+Clear+Services/';
+
+    function render(rating, reviews) {
+        const maxStars = 5;
+        let starsHtml = '';
+        for (let i = 1; i <= maxStars; i++) {
+            starsHtml += i <= Math.floor(rating)
+                ? '<i class="fas fa-star"></i>'
+                : '<i class="far fa-star"></i>';
+        }
+        container.innerHTML = `<a href="${googleProfileUrl}" target="_blank"><span class="rating-number">${rating.toFixed(1)}</span><span class="stars">${starsHtml}</span><span class="rating-count">(${reviews} Ratings & Reviews)</span></a>`;
+    }
+
+    try {
+        const apiKey = 'YOUR_API_KEY'; // Replace with your Google API key
+        const placeId = 'PLACE_ID'; // Replace with your Place ID
+        const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=rating,user_ratings_total&key=${apiKey}`;
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Network response was not ok');
+        const data = await response.json();
+        if (data.status !== 'OK') throw new Error('API response not OK');
+        render(data.result.rating, data.result.user_ratings_total);
+    } catch (error) {
+        // Default to 5 stars and 14 reviews on failure
+        render(5, 14);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', loadGoogleRating);
