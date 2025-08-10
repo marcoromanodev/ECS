@@ -98,6 +98,43 @@ section::before {
     font-weight: bold;
 }
 
+/* Small Google rating widget centered under the quote */
+.google-rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    color: white;
+}
+
+.google-rating a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.google-rating .rating-number {
+    margin-right: 0.25rem;
+    font-weight: bold;
+}
+
+.google-rating .stars {
+    display: flex;
+    margin: 0 0.25rem;
+}
+
+.google-rating .stars i {
+    color: #f4b400;
+    margin: 0 1px;
+}
+
+.google-rating .rating-count {
+    margin-left: 0.25rem;
+    font-size: 0.8rem;
+}
+
 /* Adding padding for motto space */
 .hero p {
     margin-top: 2rem; /* Add margin to space out the motto from nav links */
