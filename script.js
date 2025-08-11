@@ -97,48 +97,44 @@ function updateHeader() {
 window.addEventListener('scroll', updateHeader);
 document.addEventListener('DOMContentLoaded', updateHeader);
 
-// Select carousel elements
-const carousel = document.querySelector('.carousel-images');
-const carouselImages = document.querySelectorAll('.carousel-img');
-const leftArrow = document.querySelector('.left-arrow');
-const rightArrow = document.querySelector('.right-arrow');
+// Initialize any carousels on the page
+document.querySelectorAll('.carousel-container').forEach(container => {
+    const carousel = container.querySelector('.carousel-images');
+    const carouselImages = container.querySelectorAll('.carousel-img');
+    const leftArrow = container.querySelector('.left-arrow');
+    const rightArrow = container.querySelector('.right-arrow');
 
-// Initialize carousel only if images are present
-if (carousel && carouselImages.length > 0 && leftArrow && rightArrow) {
-    // Set initial index and image width
-    let currentIndex = 0;
-    const totalImages = carouselImages.length;
-    const imagesToShow = 3;
-    let imageWidth = carouselImages[0].clientWidth + 20;
+    if (carousel && carouselImages.length > 0 && leftArrow && rightArrow) {
+        let currentIndex = 0;
+        const totalImages = carouselImages.length;
+        const imagesToShow = 3;
+        let imageWidth = carouselImages[0].clientWidth + 20;
 
-    // Right arrow click event
-    rightArrow.addEventListener('click', () => {
-        if (currentIndex < totalImages - imagesToShow) {
-            currentIndex++;
-            updateCarousel();
+        rightArrow.addEventListener('click', () => {
+            if (currentIndex < totalImages - imagesToShow) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+
+        leftArrow.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+
+        function updateCarousel() {
+            const newTransformValue = -currentIndex * imageWidth;
+            carousel.style.transform = `translateX(${newTransformValue}px)`;
         }
-    });
 
-    // Left arrow click event
-    leftArrow.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
+        window.addEventListener('resize', () => {
+            imageWidth = carouselImages[0].clientWidth + 20;
             updateCarousel();
-        }
-    });
-
-    // Function to update the carousel's position
-    function updateCarousel() {
-        const newTransformValue = -currentIndex * imageWidth;
-        carousel.style.transform = `translateX(${newTransformValue}px)`;
+        });
     }
-
-    // Update image width on window resize to ensure responsiveness
-    window.addEventListener('resize', () => {
-        imageWidth = carouselImages[0].clientWidth + 20;
-        updateCarousel();
-    });
-}
+});
 
 // Scroll to the section specified in the URL hash
 function scrollToTarget() {
