@@ -100,39 +100,38 @@ document.addEventListener('DOMContentLoaded', updateHeader);
 // Initialize any carousels on the page
 document.querySelectorAll('.carousel-container').forEach(container => {
     const carousel = container.querySelector('.carousel-images');
-    const carouselImages = container.querySelectorAll('.carousel-img');
     const leftArrow = container.querySelector('.left-arrow');
     const rightArrow = container.querySelector('.right-arrow');
 
-    if (carousel && carouselImages.length > 0 && leftArrow && rightArrow) {
-        let currentIndex = 0;
-        const totalImages = carouselImages.length;
-        const imagesToShow = 3;
-        let imageWidth = carouselImages[0].clientWidth + 20;
+    if (carousel && leftArrow && rightArrow) {
+        let imageWidth = carousel.querySelector('.carousel-img').clientWidth;
+
+        function updateImageWidth() {
+            imageWidth = carousel.querySelector('.carousel-img').clientWidth;
+        }
 
         rightArrow.addEventListener('click', () => {
-            if (currentIndex < totalImages - imagesToShow) {
-                currentIndex++;
-                updateCarousel();
-            }
+            carousel.style.transition = 'transform 0.5s ease-in-out';
+            carousel.style.transform = `translateX(-${imageWidth}px)`;
+            carousel.addEventListener('transitionend', function handler() {
+                carousel.style.transition = 'none';
+                carousel.appendChild(carousel.firstElementChild);
+                carousel.style.transform = 'translateX(0)';
+                carousel.removeEventListener('transitionend', handler);
+            });
         });
 
         leftArrow.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateCarousel();
-            }
+            carousel.style.transition = 'none';
+            carousel.insertBefore(carousel.lastElementChild, carousel.firstElementChild);
+            carousel.style.transform = `translateX(-${imageWidth}px)`;
+            // Force reflow to apply the initial transform before transitioning back
+            carousel.offsetHeight;
+            carousel.style.transition = 'transform 0.5s ease-in-out';
+            carousel.style.transform = 'translateX(0)';
         });
 
-        function updateCarousel() {
-            const newTransformValue = -currentIndex * imageWidth;
-            carousel.style.transform = `translateX(${newTransformValue}px)`;
-        }
-
-        window.addEventListener('resize', () => {
-            imageWidth = carouselImages[0].clientWidth + 20;
-            updateCarousel();
-        });
+        window.addEventListener('resize', updateImageWidth);
     }
 });
 
