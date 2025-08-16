@@ -445,11 +445,11 @@ footer {
 
 /* Place buttons directly next to the carousel images */
 .prev-btn {
-    left: 0; /* Position the button at the left edge of the carousel */
+    left: 5%; /* Align button with the left edge of the carousel images */
 }
 
 .next-btn {
-    right: 0; /* Position the button at the right edge of the carousel */
+    right: 5%; /* Align button with the right edge of the carousel images */
 }
 
 /* Responsiveness for the carousel */
@@ -468,12 +468,13 @@ footer {
         height: 40px;
     }
 
+    /* Adjust arrow position for narrower carousel */
     .prev-btn {
-        left: 10px;
+        left: 2.5%;
     }
 
     .next-btn {
-        right: 10px;
+        right: 2.5%;
     }
 }
 
